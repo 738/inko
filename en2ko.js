@@ -3,20 +3,17 @@ const 한글 = "ㄱㄲㄴㄷㄸㄹㅁㅂㅃㅅㅆㅇㅈㅉㅊㅋㅌㅍㅎㅏㅐ�
 const 초성 = "ㄱㄲㄴㄷㄸㄹㅁㅂㅃㅅㅆㅇㅈㅉㅊㅋㅌㅍㅎ";
 const 중성 = "ㅏㅐㅑㅒㅓㅔㅕㅖㅗㅘㅙㅚㅛㅜㅝㅞㅟㅠㅡㅢㅣ";
 const 종성 = "ㄱㄲㄳㄴㄵㄶㄷㄹㄺㄻㄼㄽㄾㄿㅀㅁㅂㅄㅅㅆㅇㅈㅊㅋㅌㅍㅎ";
+const 첫모음 = 19;
 
 function en2ko(input) {
-    const 첫모음 = 19;
-    result = '';
+    let result = '';
     if (input === '' || input === undefined) return result;
-
-    let _초성 = -1;
-    let _중성 = -1;
-    let _종성 = -1;
+    let _초성 = -1, _중성 = -1, _종성 = -1;
 
     // 초성 + 중성 + 종성 / 초성 + 중성 / 초성 / 중성
     for (var i = 0; i < input.length; i++) {
         var char = input[i];
-        var index = 영어.indexOf(c);
+        var index = 영어.indexOf(char);
         // 자음이라면
         if (index < 첫모음) {
             // 초성이 없다면
@@ -26,7 +23,7 @@ function en2ko(input) {
             // 초성, 중성도 있고 종성도 있다면 (복자음)
             else if (_초성 !== -1 && _중성 !== -1 && _종성 !== -1) {
                 if (_종성 === 종성.indexOf('ㄱ') && index === 한글.indexOf('ㅅ')) _종성 = 종성.indexOf('ㄳ');   // 복자음 ㄳ
-                else if (_종성 === 종성.indexOf('ㄴ')) {
+                else if (_종성 === 종성.indexOf()) {
                     if (index === 한글.indexOf('ㅈ')) _종성 = 종성.indexOf('ㄵ');                            // 복자음 ㄵ
                     else if (index === 한글.indexOf('ㅎ')) _종성 = 종성.indexOf('ㄶ');                       // 복자음 ㄶ
                 }
@@ -40,6 +37,12 @@ function en2ko(input) {
                     else if (index === 한글.indexOf('ㅎ')) _종성 = 종성.indexOf('ㅀ');                       // 복자음 ㅀ
                 }
                 else if (_종성 === 종성.indexOf('ㅂ') && index === 한글.indexOf('ㅅ')) _종성 = 종성.indexOf('ㅄ');  // 복자음 ㅄ
+                // 복자음이 아니라면 이전의 초, 중, 종 조합으로 한글을 생성한다.
+                else {
+                    result += 한글생성(_초성, _중성, _종성);
+                    _초성 = -1, _중성 = -1, _종성 = -1;
+                    _초성 = 초성.indexOf(char);
+                }
             }
         }
         // 모음이라면
@@ -61,7 +64,18 @@ function en2ko(input) {
                     else if (index === 한글.indexOf('ㅣ')) _중성 = 중성.indexOf('ㅟ');                          // 복모음 ㅟ
                 }
                 else if (_중성 === 중성.indexOf('ㅡ') && index === 한글.indexOf('ㅣ')) _중성 = 중성.indexOf('ㅢ');  // 복모음 ㅢ
+                // 복모음이 아니라면 이전의 초, 중 조합으로 한글을 생성한다.
+                else {
+                    result += 한글생성(_초성, _중성, _종성);
+                    _초성 = -1, _중성 = -1, _종성 = -1;
+                    _중성 = 중성.indexOf(char);
+                }
             }
         }
     }
+    return result;
+}
+
+function 한글생성(초, 중, 종) {
+	return String.fromCharCode(44032 + 초 * 588 + 중 * 28 + 종 + 1);
 }
