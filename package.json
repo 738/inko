@@ -1,0 +1,21 @@
+{
+  "name": "en2ko",
+  "version": "1.0.0",
+  "description": "## General - Since 2018.05.02 - 영어로 쳐야할 글을 한글로 쳤을 때, 혹은 한글로 쳐야할 글을 영어로 쳤을 때 변환해주는 기능을 가진 오픈소스입니다.",
+  "main": "en2ko.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com-jonjee:JonJee/en2kr.git"
+  },
+  "author": "Jon Jee",
+  "license": "MIT",
+  "dependencies": {
+    "mocha": "^5.1.1"
+  }
+}

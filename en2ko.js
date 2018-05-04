@@ -79,3 +79,5 @@ function en2ko(input) {
 function 한글생성(초, 중, 종) {
 	return String.fromCharCode(44032 + 초 * 588 + 중 * 28 + 종 + 1);
 }
+
+module.exports = en2ko;
