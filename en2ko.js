@@ -14,12 +14,27 @@ function en2ko(input) {
     for (var i = 0; i < input.length; i++) {
         var char = input[i];
         var index = 영어.indexOf(char);
+        var _한글 = 한글[index];
+        console.log(index);
+        // 한글이 아니라면
+        if (index === -1 ) {
+            result += 한글생성(_초성, _중성, _종성);
+            _초성 = -1, _중성 = -1, _종성 = -1;
+            result += char;
+        }
         // 자음이라면
-        if (index < 첫모음) {
+        else if (index < 19) {
             // 초성이 없다면
-            if (_초성 === -1) _초성 = 초성.indexOf(char);
+            if (_초성 === -1) _초성 = 초성.indexOf(_한글);
             // 초성, 중성이 있고 종성이 없다면
-            else if (_초성 !== -1 && _중성 !== -1 && _종성 === -1) _종성 = 종성.indexOf(char);
+            else if (_초성 !== -1 && _중성 !== -1 && _종성 === -1) {
+                // 다음 글자가 모음이라면
+                if (i + 1 !== input.length && 영어.indexOf(input[i + 1]) >= 첫모음) {
+                    result += 한글생성(_초성, _중성, _종성);
+                    _초성 = 초성.indexOf(_한글);
+                } else _종성 = 종성.indexOf(_한글);
+                _종성 = 종성.indexOf(_한글);
+            }
             // 초성, 중성도 있고 종성도 있다면 (복자음)
             else if (_초성 !== -1 && _중성 !== -1 && _종성 !== -1) {
                 if (_종성 === 종성.indexOf('ㄱ') && index === 한글.indexOf('ㅅ')) _종성 = 종성.indexOf('ㄳ');   // 복자음 ㄳ
@@ -41,16 +56,16 @@ function en2ko(input) {
                 else {
                     result += 한글생성(_초성, _중성, _종성);
                     _초성 = -1, _중성 = -1, _종성 = -1;
-                    _초성 = 초성.indexOf(char);
+                    _초성 = 초성.indexOf(_한글);
                 }
             }
         }
         // 모음이라면
         else {
             // 초성이 없다면 모음이 하나 왔다는 의미
-            if (_초성 === -1) _중성 = 중성.indexOf(char);
+            if (_초성 === -1) _중성 = 중성.indexOf(_한글);
             // 초성이 있고 중성이 없다면
-            else if (_초성 !== -1 && _중성 === -1) _중성 = 중성.indexOf(char);
+            else if (_초성 !== -1 && _중성 === -1) _중성 = 중성.indexOf(_한글);
             // 초성이 있고 중성도 있다면 (복모음)
             else if (_초성 !== -1 && _중성 !== -1) {
                 if (_중성 === 중성.indexOf('ㅗ')) {
@@ -68,7 +83,7 @@ function en2ko(input) {
                 else {
                     result += 한글생성(_초성, _중성, _종성);
                     _초성 = -1, _중성 = -1, _종성 = -1;
-                    _중성 = 중성.indexOf(char);
+                    _중성 = 중성.indexOf(_한글);
                 }
             }
         }
