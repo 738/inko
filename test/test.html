@@ -1,0 +1,19 @@
+<!Doctype html>
+<html>
+<head>
+    <script src="../en2ko.js"></script>
+</head>
+<body>
+<script>
+    var enko = new Enko();
+    function englishToKorean(text) {
+        console.log(text)
+        // var input = document.getElementById("englishInput").value;
+        document.getElementById("koreanOutput").innerHTML = enko.en2ko(text);
+    }
+</script>
+input: <input id="englishInput" type="text" onchange="englishToKorean(this.value)" value="asdf"/>
+<br />
+output: <div id="koreanOutput"></div>
+</body>
+</html>
