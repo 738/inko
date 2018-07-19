@@ -10,7 +10,12 @@ function en2ko(input) {
     if (input === '' || input === undefined) return result;
     let _초성 = -1, _중성 = -1, _종성 = -1;
 
-    // 초성 + 중성 + 종성 / 초성 + 중성 / 초성 / 중성
+    /*
+        1. 초성 + 중성 + 종성
+        2. 초성 + 중성
+        3. 초성
+        4. 중성
+    */
     for (let i = 0; i < input.length; i++) {
         let char = input[i];
         let index = 영어.indexOf(char);
@@ -18,7 +23,7 @@ function en2ko(input) {
         // console.log(index);
         // 한글이 아니라면
         if (index === -1) {
-            result += 한글생성(_초성, _중성, _종성);
+            if(is한글(한글생성(_초성, _중성, _종성))) result += 한글생성(_초성, _중성, _종성);
             _초성 = -1, _중성 = -1, _종성 = -1;
             result += char;
         }
@@ -95,6 +100,14 @@ function 한글생성(초, 중, 종) {
 	return String.fromCharCode(44032 + 초 * 588 + 중 * 28 + 종 + 1);
 }
 
-console.log(en2ko('dkssudgktpdy tkfkdgody'));
+function is한글(char) {
+    if (char.length > 1) throw new Error("한글자가 아닙니다.");
+    return /[ㄱ-ㅎ|ㅏ-ㅣ|기-힣]/.test(char);
+}
+
+console.log(en2ko('dkssudgktpdy  123'));
+console.log(en2ko('12345'));
+// console.log(한글생성(-1,-1,-1));
+// console.log(is한글("f"));
 
 module.exports = en2ko;
