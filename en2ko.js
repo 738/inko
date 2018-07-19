@@ -11,13 +11,13 @@ function en2ko(input) {
     let _초성 = -1, _중성 = -1, _종성 = -1;
 
     // 초성 + 중성 + 종성 / 초성 + 중성 / 초성 / 중성
-    for (var i = 0; i < input.length; i++) {
-        var char = input[i];
-        var index = 영어.indexOf(char);
-        var _한글 = 한글[index];
-        console.log(index);
+    for (let i = 0; i < input.length; i++) {
+        let char = input[i];
+        let index = 영어.indexOf(char);
+        let _한글 = 한글[index];
+        // console.log(index);
         // 한글이 아니라면
-        if (index === -1 ) {
+        if (index === -1) {
             result += 한글생성(_초성, _중성, _종성);
             _초성 = -1, _중성 = -1, _종성 = -1;
             result += char;
@@ -94,5 +94,7 @@ function en2ko(input) {
 function 한글생성(초, 중, 종) {
 	return String.fromCharCode(44032 + 초 * 588 + 중 * 28 + 종 + 1);
 }
+
+console.log(en2ko('dkssudgktpdy tkfkdgody'));
 
 module.exports = en2ko;
