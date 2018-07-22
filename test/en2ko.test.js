@@ -28,6 +28,9 @@ describe('en2ko', () => {
         assert.equal(enko.en2ko('rkskekfk'), '가나다라');
         assert.equal(enko.en2ko('rldjrsktpdy?'), '기억나세요?');
         assert.equal(enko.en2ko('anjgoqnpfrqnpfr'), '뭐해 뷁뷁');
+        assert.equal(enko.en2ko('anjgktpdy'), '뭐하세요');
+        assert.equal(enko.en2ko('apfhd'), '메롱');
+        assert.equal(enko.en2ko('fnffnfkffk'), '룰루랄라');
         assert.equal(enko.en2ko('rldjr wjvusdp wjrk todrkrsk'), '기억 저편에 너가 생각나');
     });
 });
