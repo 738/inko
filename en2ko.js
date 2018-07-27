@@ -41,8 +41,12 @@ class Enko {
                     if (i + 1 !== input.length && 영어.indexOf(input[i + 1]) >= 첫모음) {
                         result += this.한글생성(_초성, _중성, _종성);
                         _초성 = 초성.indexOf(_한글);
-                    } else _종성 = 종성.indexOf(_한글);
-                    _종성 = 종성.indexOf(_한글);
+                        _중성 = -1;
+                    } 
+                    // 다음 글자가 자음이라면
+                    else {
+                        _종성 = 종성.indexOf(_한글);
+                    }
                 }
                 // 초성, 중성도 있고 종성도 있다면 (복자음)
                 else if (_초성 !== -1 && _중성 !== -1 && _종성 !== -1) {
@@ -97,6 +101,10 @@ class Enko {
                 }
             }
         }
+        if (_초성 !== -1) {
+            result += this.한글생성(_초성, _중성, _종성);
+            _초성 = -1, _중성 = -1, _종성 = -1;
+        }
         return result;
     }
     
@@ -111,8 +119,10 @@ class Enko {
 }
 
 var enko = new Enko();
-console.log(enko.en2ko('dkssudgktpdy  123'));
-console.log(enko.en2ko('12345'));
+console.log(enko.en2ko('anjgo qnpfrqnpfr'));
+console.log(enko.en2ko('qjshs  123'));
+console.log(enko.en2ko('tpdy!'));
+console.log(enko.en2ko('fnffnfkffk'));
 // console.log(한글생성(-1,-1,-1));
 // console.log(is한글("f"));
 
