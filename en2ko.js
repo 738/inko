@@ -11,7 +11,7 @@ class Enko {
         let result = '';
         if (input === '' || input === undefined) return result;
         let _초성 = -1, _중성 = -1, _종성 = -1;
-    
+
         /*
             1. 초성 + 중성 + 종성
             2. 초성 + 중성
@@ -22,54 +22,91 @@ class Enko {
             let char = input[i];
             let index = 영어.indexOf(char);
             let _한글 = 한글[index];
-            // console.log(index);
             // 한글이 아니라면
             if (index === -1) {
-                const 새글자 = this.한글생성(_초성, _중성, _종성);
-                // 전에 글자가 한글일 경우에만 새 글자 추가
-                if(this.is한글(새글자)) result += 새글자;
+                // 남아있는 한글 처리
+                if (_초성 !== -1) {
+                    if (_중성 !== -1) result += this.한글생성(_초성, _중성, _종성);     // 초성 + 중성 + (종성)
+                    else result += 초성[_초성]      // 초성만
+                } else {
+                    if (_중성 !== -1) result += 중성[_중성]    // 중성만
+                    else if (_종성 !== -1) result += 종성[_종성]    // 종성만 (복자음)
+                }
                 _초성 = -1, _중성 = -1, _종성 = -1;
                 result += char;
             }
             // 자음이라면
             else if (index < 19) {
-                // 초성이 없다면
-                if (_초성 === -1) _초성 = 초성.indexOf(_한글);
-                // 초성, 중성이 있고 종성이 없다면
-                else if (_초성 !== -1 && _중성 !== -1 && _종성 === -1) {
-                    // 다음 글자가 모음이라면
-                    if (i + 1 !== input.length && 영어.indexOf(input[i + 1]) >= 첫모음) {
-                        result += this.한글생성(_초성, _중성, _종성);
-                        _초성 = 초성.indexOf(_한글);
+                if (_중성 !== -1) {
+                    // 중성만 입력됨
+                    if (_초성 !== -1) {
+                        result += 중성[_중성];
                         _중성 = -1;
-                    } 
-                    // 다음 글자가 자음이라면
-                    else {
-                        _종성 = 종성.indexOf(_한글);
-                    }
-                }
-                // 초성, 중성도 있고 종성도 있다면 (복자음)
-                else if (_초성 !== -1 && _중성 !== -1 && _종성 !== -1) {
-                    if (_종성 === 종성.indexOf('ㄱ') && index === 한글.indexOf('ㅅ')) _종성 = 종성.indexOf('ㄳ');   // 복자음 ㄳ
-                    else if (_종성 === 종성.indexOf()) {
-                        if (index === 한글.indexOf('ㅈ')) _종성 = 종성.indexOf('ㄵ');                            // 복자음 ㄵ
-                        else if (index === 한글.indexOf('ㅎ')) _종성 = 종성.indexOf('ㄶ');                       // 복자음 ㄶ
-                    }
-                    else if (_종성 === 종성.indexOf('ㄹ')) {
-                        if (index === 한글.indexOf('ㄱ')) _종성 = 종성.indexOf('ㄺ');                            // 복자음 ㄺ
-                        else if (index === 한글.indexOf('ㅁ')) _종성 = 종성.indexOf('ㄻ');                       // 복자음 ㄻ
-                        else if (index === 한글.indexOf('ㅂ')) _종성 = 종성.indexOf('ㄼ');                       // 복자음 ㄼ
-                        else if (index === 한글.indexOf('ㅅ')) _종성 = 종성.indexOf('ㄽ');                       // 복자음 ㄽ
-                        else if (index === 한글.indexOf('ㅌ')) _종성 = 종성.indexOf('ㄾ');                       // 복자음 ㄾ
-                        else if (index === 한글.indexOf('ㅍ')) _종성 = 종성.indexOf('ㄿ');                       // 복자음 ㄿ
-                        else if (index === 한글.indexOf('ㅎ')) _종성 = 종성.indexOf('ㅀ');                       // 복자음 ㅀ
-                    }
-                    else if (_종성 === 종성.indexOf('ㅂ') && index === 한글.indexOf('ㅅ')) _종성 = 종성.indexOf('ㅄ');  // 복자음 ㅄ
-                    // 복자음이 아니라면 이전의 초, 중, 종 조합으로 한글을 생성한다.
-                    else {
-                        result += this.한글생성(_초성, _중성, _종성);
-                        _초성 = -1, _중성 = -1, _종성 = -1;
                         _초성 = 초성.indexOf(_한글);
+                    }
+                    // 종성
+                    else {
+                        if (_종성 == -1) {
+                            _종성 = 종성.indexOf(_한글);
+                            // ㄸ,ㅃ,ㅉ와 같이 종성에 못오는 자음들의 경우 초성으로 처리해야함
+                            if (_종성 == -1) {
+                                result += this.한글생성(_초성, _중성, _종성);
+                                _초성 = 초성.indexOf(_한글);
+                                중성 = -1;
+                            }
+                            // 복자음 처리
+                            else if (_종성 === 종성.indexOf('ㄱ') && _한글 === 'ㅅ') _종성 = 종성.indexOf('ㄳ');   // 복자음 ㄳ
+                            else if (_종성 === 종성.indexOf('ㄴ')) {
+                                if (_한글 === 'ㅈ') _종성 = 종성.indexOf('ㄵ');                                 // 복자음 ㄵ
+                                else if (_한글 === 'ㅎ') _종성 = 종성.indexOf('ㄶ');                            // 복자음 ㄶ
+                            }
+                            else if (_종성 === 종성.indexOf('ㄹ')) {
+                                if (_한글 === 'ㄱ') _종성 = 종성.indexOf('ㄺ');                                 // 복자음 ㄺ
+                                else if (_한글 === 'ㅁ') _종성 = 종성.indexOf('ㄻ');                            // 복자음 ㄻ
+                                else if (_한글 === 'ㅂ') _종성 = 종성.indexOf('ㄼ');                            // 복자음 ㄼ
+                                else if (_한글 === 'ㅅ') _종성 = 종성.indexOf('ㄽ');                            // 복자음 ㄽ
+                                else if (_한글 === 'ㅌ') _종성 = 종성.indexOf('ㄾ');                            // 복자음 ㄾ
+                                else if (_한글 === 'ㅍ') _종성 = 종성.indexOf('ㄿ');                            // 복자음 ㄿ
+                                else if (_한글 === 'ㅎ') _종성 = 종성.indexOf('ㅀ');                            // 복자음 ㅀ
+                            }
+                            else if (_종성 === 종성.indexOf('ㅂ') && _한글 === 'ㅅ') _종성 = 종성.indexOf('ㅄ');   // 복자음 ㅄ
+                            // 복자음이 아니므로 초성으로 처리
+                            else {
+                                result += this.한글생성(_초성, _중성, _종성);
+                                _중성 = -1, _종성 = -1;
+                                _초성 = 초성.indexOf(_한글);
+                            }
+                        }
+                    }
+                } else {
+                    if (_초성 === -1) {
+                        // if (_종성 !== -1) {				// 복자음 후 초성
+                        //     result += 종성[_종성];
+                        //     _종성 = -1;
+                        // }
+                        // _초성 = 초성.indexOf(_한글);
+                    }
+                    // 복자음 처리
+                    else if (_초성 === 초성.indexOf('ㄱ') && _한글 === 'ㅅ') _종성 = 종성.indexOf('ㄳ'), _초성 = -1;   // 복자음 ㄳ
+                    else if (_초성 === 초성.indexOf('ㄴ')) {
+                        if (_한글 === 'ㅈ') _종성 = 종성.indexOf('ㄵ');                                 // 복자음 ㄵ
+                        else if (_한글 === 'ㅎ') _종성 = 종성.indexOf('ㄶ');                            // 복자음 ㄶ
+                        _초성 = -1;
+                    }
+                    else if (_초성 === 초성.indexOf('ㄹ')) {
+                        if (_한글 === 'ㄱ') _종성 = 종성.indexOf('ㄺ');                                 // 복자음 ㄺ
+                        else if (_한글 === 'ㅁ') _종성 = 종성.indexOf('ㄻ');                            // 복자음 ㄻ
+                        else if (_한글 === 'ㅂ') _종성 = 종성.indexOf('ㄼ');                            // 복자음 ㄼ
+                        else if (_한글 === 'ㅅ') _종성 = 종성.indexOf('ㄽ');                            // 복자음 ㄽ
+                        else if (_한글 === 'ㅌ') _종성 = 종성.indexOf('ㄾ');                            // 복자음 ㄾ
+                        else if (_한글 === 'ㅍ') _종성 = 종성.indexOf('ㄿ');                            // 복자음 ㄿ
+                        else if (_한글 === 'ㅎ') _종성 = 종성.indexOf('ㅀ');                            // 복자음 ㅀ
+                        _초성 = -1;
+                    }
+                    else if (_종성 === 종성.indexOf('ㅂ') && _한글 === 'ㅅ') _종성 = 종성.indexOf('ㅄ'), _초성 = -1;   // 복자음 ㅄ
+                    else {      // 단자음 연타
+                        result += 초성[_초성];
+					    _초성 = 초성.indexOf(_한글);
                     }
                 }
             }
@@ -101,17 +138,21 @@ class Enko {
                 }
             }
         }
+        // 남아있는 한글 처리
         if (_초성 !== -1) {
-            result += this.한글생성(_초성, _중성, _종성);
-            _초성 = -1, _중성 = -1, _종성 = -1;
+            if (_중성 !== -1) result += this.한글생성(_초성, _중성, _종성);     // 초성 + 중성 + (종성)
+            else result += 초성[_초성]      // 초성만
+        } else {
+            if (_중성 !== -1) result += 중성[_중성]    // 중성만
+            else if (_종성 !== -1) result += 종성[_종성]    // 종성만 (복자음)
         }
         return result;
     }
-    
+
     한글생성(초, 중, 종) {
         return String.fromCharCode(44032 + 초 * 588 + 중 * 28 + 종 + 1);
     }
-    
+
     is한글(char) {
         if (char.length > 1) throw new Error("한글자가 아닙니다.");
         return /[ㄱ-ㅎ|ㅏ-ㅣ|기-힣]/.test(char);
@@ -123,6 +164,10 @@ console.log(enko.en2ko('anjgo qnpfrqnpfr'));
 console.log(enko.en2ko('qjshs  123'));
 console.log(enko.en2ko('tpdy!'));
 console.log(enko.en2ko('fnffnfkffk'));
+console.log(enko.en2ko('diffkfl'));
+console.log(enko.en2ko('fnffn'));
+console.log(enko.en2ko('zzzzz'));
+console.log(enko.en2ko('nnnn'));
 // console.log(한글생성(-1,-1,-1));
 // console.log(is한글("f"));
 
