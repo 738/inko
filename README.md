@@ -1,4 +1,4 @@
-# en2ko(잉투코)
+# inko.js (잉꼬JS)
 
 ## General
 - Since 2018.05.02
