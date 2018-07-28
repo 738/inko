@@ -16,10 +16,10 @@ describe('enko', () => {
 
     it('한글생성', () => {
         assert.equal(enko.한글생성(0, 0, 0), '각');
-        // assert.equal(enko.한글생성(3, 3, 3), '댄');
-        // assert.equal(enko.한글생성(1, 10, 10), '꽯');
-        // assert.equal(enko.한글생성(4, 6, 8), '뗡');
-        // assert.equal(enko.한글생성(14, 15, 13), '췐');
+        assert.equal(enko.한글생성(3, 3, 3), '댼');
+        assert.equal(enko.한글생성(1, 10, 10), '꽯');
+        assert.equal(enko.한글생성(4, 6, 8), '뗡');
+        assert.equal(enko.한글생성(14, 15, 13), '췚');
     });
 
     it('영타 -> 한글', () => {

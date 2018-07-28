@@ -21,12 +21,6 @@
         if (input === '' || input === undefined) return result;
         let _초성 = -1, _중성 = -1, _종성 = -1;
 
-        /*
-            1. 초성 + 중성 + 종성
-            2. 초성 + 중성
-            3. 초성
-            4. 중성
-        */
         for (let i = 0; i < input.length; i++) {
             let char = input[i];
             let index = 영어.indexOf(char);
