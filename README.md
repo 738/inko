@@ -1,4 +1,5 @@
 # inko.js (잉꼬JS)
+[![npm](https://img.shields.io/npm/v/inko.svg)](https://npmjs.com/package/inko)
 
 ## General
 - Since 2018.05.02
