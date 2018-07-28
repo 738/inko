@@ -4,12 +4,14 @@
 
 (function () {
     // constants
-    const 영어 = "rRseEfaqQtTdwWczxvgkoiOjpuPhynbml";
-    const 한글 = "ㄱㄲㄴㄷㄸㄹㅁㅂㅃㅅㅆㅇㅈㅉㅊㅋㅌㅍㅎㅏㅐㅑㅒㅓㅔㅕㅖㅗㅛㅜㅠㅡㅣ";
-    const 초성 = "ㄱㄲㄴㄷㄸㄹㅁㅂㅃㅅㅆㅇㅈㅉㅊㅋㅌㅍㅎ";
-    const 중성 = "ㅏㅐㅑㅒㅓㅔㅕㅖㅗㅘㅙㅚㅛㅜㅝㅞㅟㅠㅡㅢㅣ";
-    const 종성 = "ㄱㄲㄳㄴㄵㄶㄷㄹㄺㄻㄼㄽㄾㄿㅀㅁㅂㅄㅅㅆㅇㅈㅊㅋㅌㅍㅎ";
+    const 영어 = "rRseEfaqQtTdwWczxvgkoiOjpuPhynbml";                    // 33개
+    const 한글 = "ㄱㄲㄴㄷㄸㄹㅁㅂㅃㅅㅆㅇㅈㅉㅊㅋㅌㅍㅎㅏㅐㅑㅒㅓㅔㅕㅖㅗㅛㅜㅠㅡㅣ";      // 33개
+    const 초성 = "ㄱㄲㄴㄷㄸㄹㅁㅂㅃㅅㅆㅇㅈㅉㅊㅋㅌㅍㅎ";                          // 19개
+    const 중성 = "ㅏㅐㅑㅒㅓㅔㅕㅖㅗㅘㅙㅚㅛㅜㅝㅞㅟㅠㅡㅢㅣ";                       // 21개
+    const 종성 = "ㄱㄲㄳㄴㄵㄶㄷㄹㄺㄻㄼㄽㄾㄿㅀㅁㅂㅄㅅㅆㅇㅈㅊㅋㅌㅍㅎ";              // 27개
     const 첫모음 = 19;
+    const 가 = 44032;
+    const 힣 = 55203;
 
     // constructor
     function Inko() {
@@ -180,11 +182,51 @@
     }
 
     Inko.prototype.ko2en = function(input) {
-
+        // input = ㅗ디ㅣㅐ 재깅
+        let array = [-1, -1, -1, -1, -1];
+        
+        for (let i = 0; i < input.length; i++) {
+            let _한글 = input[i];
+            if (_한글.charCodeAt() >= 가 && _한글.charCodeAt() <= 힣) {
+                array = this.한글분리(_한글);
+            }
+        }
+        
     }
 
+    // 초성, 중성, 종성의 charCode를 받아서 합친 한글의 charCode를 반환함
     Inko.prototype.한글생성 = function (초, 중, 종) {
         return String.fromCharCode(44032 + 초 * 588 + 중 * 28 + 종 + 1);
+    }
+
+    // 한글(charCode) 입력값으로 받아서 초성, 중성, 종성 분리해줌
+    Inko.prototype.한글분리 = function (한글) {
+        let 초 = Math.floor((한글 - 가) / 588);
+        let 중 = Math.floor((한글 - 가 - 초 * 588) / 28);
+        let 종 = 한글 - 가 - 초 * 588 - 중 * 28 - 1;
+        let 중1 = 중, 중2 = -1, 종1 = 종, 종2 = -1;
+
+        if (중 == 중성.indexOf("ㅘ")) 중1 = 중성.indexOf("ㅗ"), 중2 = 중성.indexOf("ㅏ");
+        else if (중 == 중성.indexOf("ㅙ")) 중1 = 중성.indexOf("ㅗ"), 중2 = 중성.indexOf("ㅐ");
+        else if (중 == 중성.indexOf("ㅚ")) 중1 = 중성.indexOf("ㅗ"), 중2 = 중성.indexOf("ㅣ");
+        else if (중 == 중성.indexOf("ㅝ")) 중1 = 중성.indexOf("ㅜ"), 중2 = 중성.indexOf("ㅓ");
+        else if (중 == 중성.indexOf("ㅞ")) 중1 = 중성.indexOf("ㅜ"), 중2 = 중성.indexOf("ㅔ");
+        else if (중 == 중성.indexOf("ㅟ")) 중1 = 중성.indexOf("ㅜ"), 중2 = 중성.indexOf("ㅣ");
+        else if (중 == 중성.indexOf("ㅢ")) 중1 = 중성.indexOf("ㅡ"), 중2 = 중성.indexOf("ㅣ");
+
+        if (종 == 종성.indexOf("ㄳ")) 종1 = 종성.indexOf("ㄱ"), 종2 = 종성.indexOf("ㅅ");
+        else if (종 == 종성.indexOf("ㄵ")) 종1 = 종성.indexOf("ㄴ"), 종2 = 종성.indexOf("ㅈ");
+        else if (종 == 종성.indexOf("ㄶ")) 종1 = 종성.indexOf("ㄴ"), 종2 = 종성.indexOf("ㅎ");
+        else if (종 == 종성.indexOf("ㄺ")) 종1 = 종성.indexOf("ㄹ"), 종2 = 종성.indexOf("ㄱ");
+        else if (종 == 종성.indexOf("ㄻ")) 종1 = 종성.indexOf("ㄹ"), 종2 = 종성.indexOf("ㅁ");
+        else if (종 == 종성.indexOf("ㄼ")) 종1 = 종성.indexOf("ㄹ"), 종2 = 종성.indexOf("ㅂ");
+        else if (종 == 종성.indexOf("ㄽ")) 종1 = 종성.indexOf("ㄹ"), 종2 = 종성.indexOf("ㅅ");
+        else if (종 == 종성.indexOf("ㄾ")) 종1 = 종성.indexOf("ㄹ"), 종2 = 종성.indexOf("ㅌ");
+        else if (종 == 종성.indexOf("ㄿ")) 종1 = 종성.indexOf("ㄹ"), 종2 = 종성.indexOf("ㅍ");
+        else if (종 == 종성.indexOf("ㅀ")) 종1 = 종성.indexOf("ㄹ"), 종2 = 종성.indexOf("ㅎ");
+        else if (종 == 종성.indexOf("ㅄ")) 종1 = 종성.indexOf("ㅂ"), 종2 = 종성.indexOf("ㅅ");
+
+        return [초, 중1, 중2, 종1, 종2];
     }
 
     Inko.prototype.is한글 = function (char) {

@@ -22,6 +22,13 @@ describe('inko', () => {
         assert.equal(inko.한글생성(14, 15, 13), '췚');
     });
 
+    it('한글분리', () => {
+        assert.deepEqual(inko.한글분리('님'.charCodeAt()), [2, 20, -1, 15, -1]);
+        assert.deepEqual(inko.한글분리('가'.charCodeAt()), [0, 0, -1, -1, -1]);
+        assert.deepEqual(inko.한글분리('뷁'.charCodeAt()), [7, 13, 5, 7, 0]);
+        assert.deepEqual(inko.한글분리('없'.charCodeAt()), [11, 4, -1, 16, 18]);
+    });
+
     it('영타 -> 한글', () => {
         assert.equal(inko.en2ko('dkssud'), '안녕');
         assert.equal(inko.en2ko('dkssudgktpdy'), '안녕하세요');
