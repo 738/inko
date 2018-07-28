@@ -20,6 +20,8 @@
         return this;
     }
 
+    Inko.prototype.VERSION = '1.0.0';
+
     Inko.prototype.en2ko = function (input) {
         let result = '';
         if (input === '' || input === undefined) return result;
