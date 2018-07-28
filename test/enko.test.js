@@ -40,4 +40,11 @@ describe('enko', () => {
         assert.equal(enko.en2ko('difralqtWyfq'), '얅밊쬷');
         assert.equal(enko.en2ko('diffkfldiffkdtud'), '얄라리얄랑셩');
     });
+
+    it('한타 -> 영어', () => {
+        assert.equal(enko.ko2en('ㅗ디ㅣㅐ'), 'hello');
+        assert.equal(enko.ko2en('ㅗ디ㅣㅐ 재깅!'), 'hello world!');
+        assert.equal(enko.ko2en('ㅡㅛ ㄹ갸둥 ㅑㄴ ㅗ뭉내ㅡㄷ'), 'my friend is handsome');
+        assert.equal(enko.ko2en('애 ㅛㅐㅕ ㄱ드드ㅠㄷㄱ ㅡㄷ?'), 'do you remember me?');
+    });
 });
