@@ -31,12 +31,12 @@ describe('enko', () => {
         assert.equal(enko.en2ko('anjgktpdy'), '뭐하세요');
         assert.equal(enko.en2ko('apfhd'), '메롱');
         assert.equal(enko.en2ko('fnffnfkffk'), '룰루랄라');
-        assert.equal(enko.en2ko('rldjr wjvusdp wjrk todrkrsk'), '기억 저편에 너가 생각나');
+        assert.equal(enko.en2ko('rldjr wjvusdp sjrk todrkrsk'), '기억 저편에 너가 생각나');
         assert.equal(enko.en2ko('dmlrlthcla'), '의기소침');
         assert.equal(enko.en2ko('dho wjgksxp rmfjtpdy?'), '왜 저한테 그러세요?');
         assert.equal(enko.en2ko('woalTwlaks woaldjqtek.'), '재밌지만 재미없다.');
         assert.equal(enko.en2ko('dbfrhrdldltjstodsladms djswpsk skgksxp clswjfgktuTek.'), '율곡이이선생님은 언제나 나한테 친절하셨다.');
-        assert.equal(enko.en2ko('alclwldksgrhtjdi rmfjf tn djqtdmf rjtdlek.'), '미치지 않고서야 그럴 수 없을 것이다.');
+        assert.equal(enko.en2ko('alclwldksgrhtjdi rmfjf tn djqtdmf rjtdlek.'), '미치지않고서야 그럴 수 없을 것이다.');
         assert.equal(enko.en2ko('difralqtWyfq'), '얅밊쬷');
         assert.equal(enko.en2ko('diffkfldiffkdtud'), '얄라리얄랑셩');
     });
