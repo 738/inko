@@ -327,3 +327,12 @@ function korTypeToEng(src) {
 
 	return res;
 }
+
+console.log(engTypeToKor('rrrrr'));
+console.log(engTypeToKor('qjshs  123'));
+console.log(engTypeToKor('tpdy!'));
+console.log(engTypeToKor('fnffnfkffk'));
+console.log(engTypeToKor('diffkfl'));
+console.log(engTypeToKor('fnffn'));
+console.log(engTypeToKor('zzzzz'));
+console.log(engTypeToKor('nnnn'));

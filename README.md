@@ -6,22 +6,23 @@
 
 ## How to install
 ```
-npm install --save en2ko
+npm install --save enko
 ```
 
 ## How to use
 ```
-var ek = require('en2ko');
+var Enko = require('enko');
+var enko = Enko();
 ```
 
 ### 영타 -> 한글
 ```
-ek.en2ko('dkssudgktpdy tptkd!');
+enko.en2ko('dkssudgktpdy tptkd!');
 // 안녕하세요 세상!
 ```
 
 ### 한타 -> 영문
 ```
-ek.ko2en('ㅗ디ㅣㅐ 재깅!');
+enko.ko2en('ㅗ디ㅣㅐ 재깅!');
 // hello world!
 ```

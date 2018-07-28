@@ -1,18 +1,19 @@
 <!Doctype html>
 <html>
 <head>
-    <script src="../en2ko.js"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <script type="text/javascript" src="../enko.js"></script>
 </head>
 <body>
 <script>
     var enko = new Enko();
     function englishToKorean(text) {
-        console.log(text)
         // var input = document.getElementById("englishInput").value;
         document.getElementById("koreanOutput").innerHTML = enko.en2ko(text);
     }
 </script>
-input: <input id="englishInput" type="text" onchange="englishToKorean(this.value)" value="asdf"/>
+input: <textarea id="englishInput" type="text" onkeyup="englishToKorean(this.value)" value=""></textarea>
 <br />
 output: <div id="koreanOutput"></div>
 </body>

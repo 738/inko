@@ -1,12 +1,22 @@
-const 영어 = "rRseEfaqQtTdwWczxvgkoiOjpuPhynbml";
-const 한글 = "ㄱㄲㄴㄷㄸㄹㅁㅂㅃㅅㅆㅇㅈㅉㅊㅋㅌㅍㅎㅏㅐㅑㅒㅓㅔㅕㅖㅗㅛㅜㅠㅡㅣ";
-const 초성 = "ㄱㄲㄴㄷㄸㄹㅁㅂㅃㅅㅆㅇㅈㅉㅊㅋㅌㅍㅎ";
-const 중성 = "ㅏㅐㅑㅒㅓㅔㅕㅖㅗㅘㅙㅚㅛㅜㅝㅞㅟㅠㅡㅢㅣ";
-const 종성 = "ㄱㄲㄳㄴㄵㄶㄷㄹㄺㄻㄼㄽㄾㄿㅀㅁㅂㅄㅅㅆㅇㅈㅊㅋㅌㅍㅎ";
-const 첫모음 = 19;
+//  Enko.js 1.0.0
+//  (c) 2018 Jon Jee
+//  Enko may be freely distributed or modified under the MIT license.
 
-class Enko {
-    en2ko(input) {
+(function () {
+    // constants
+    const 영어 = "rRseEfaqQtTdwWczxvgkoiOjpuPhynbml";
+    const 한글 = "ㄱㄲㄴㄷㄸㄹㅁㅂㅃㅅㅆㅇㅈㅉㅊㅋㅌㅍㅎㅏㅐㅑㅒㅓㅔㅕㅖㅗㅛㅜㅠㅡㅣ";
+    const 초성 = "ㄱㄲㄴㄷㄸㄹㅁㅂㅃㅅㅆㅇㅈㅉㅊㅋㅌㅍㅎ";
+    const 중성 = "ㅏㅐㅑㅒㅓㅔㅕㅖㅗㅘㅙㅚㅛㅜㅝㅞㅟㅠㅡㅢㅣ";
+    const 종성 = "ㄱㄲㄳㄴㄵㄶㄷㄹㄺㄻㄼㄽㄾㄿㅀㅁㅂㅄㅅㅆㅇㅈㅊㅋㅌㅍㅎ";
+    const 첫모음 = 19;
+
+    // constructor
+    function Enko() {
+        return this;
+    }
+
+    Enko.prototype.en2ko = function(input) {
         let result = '';
         if (input === '' || input === undefined) return result;
         let _초성 = -1, _중성 = -1, _종성 = -1;
@@ -105,7 +115,7 @@ class Enko {
                     else if (_종성 === 종성.indexOf('ㅂ') && _한글 === 'ㅅ') _종성 = 종성.indexOf('ㅄ'), _초성 = -1;   // 복자음 ㅄ
                     else {      // 단자음 연타
                         result += 초성[_초성];
-					    _초성 = 초성.indexOf(_한글);
+                        _초성 = 초성.indexOf(_한글);
                     }
                 }
             }
@@ -149,7 +159,7 @@ class Enko {
                         새초성 = 초성.indexOf('ㅅ');
                     }
                     // 복자음 아님 
-                    else {							
+                    else {
                         새초성 = 초성.indexOf(종성[_종성]);
                         _종성 = -1;
                     }
@@ -172,10 +182,10 @@ class Enko {
                 // 조합 안되는 모음
                 else {
                     // 초성 + 중성 후 중성
-                    if (_초성 != -1) {			
+                    if (_초성 != -1) {
                         result += this.한글생성(_초성, _중성, _종성);
                         _초성 = -1;
-                    } 
+                    }
                     // 중성 후 중성
                     else result += 중성[_중성];
                     _중성 = -1;
@@ -186,38 +196,53 @@ class Enko {
         // 남아있는 한글 처리
         if (_초성 !== -1) {
             // 초성 + 중성 + (종성)
-            if (_중성 !== -1) result += this.한글생성(_초성, _중성, _종성);     
+            if (_중성 !== -1) result += this.한글생성(_초성, _중성, _종성);
             // 초성만
-            else result += 초성[_초성]      
+            else result += 초성[_초성]
         } else {
             // 중성만
-            if (_중성 !== -1) result += 중성[_중성]    
+            if (_중성 !== -1) result += 중성[_중성]
             // 종성만 (복자음)
-            else if (_종성 !== -1) result += 종성[_종성]    
+            else if (_종성 !== -1) result += 종성[_종성]
         }
         return result;
     }
 
-    한글생성(초, 중, 종) {
+    Enko.prototype.한글생성 = function (초, 중, 종) {
         return String.fromCharCode(44032 + 초 * 588 + 중 * 28 + 종 + 1);
     }
 
-    is한글(char) {
+    Enko.prototype.is한글 = function (char) {
         if (char.length > 1) throw new Error("한글자가 아닙니다.");
         return /[ㄱ-ㅎ|ㅏ-ㅣ|기-힣]/.test(char);
     }
-}
 
-var enko = new Enko();
-console.log(enko.en2ko('안녕!'));
-console.log(enko.en2ko('qjshs  123'));
-console.log(enko.en2ko('tpdy!'));
-console.log(enko.en2ko('fnffnfkffk'));
-console.log(enko.en2ko('diffkfl'));
-console.log(enko.en2ko('fnffn'));
-console.log(enko.en2ko('qnpfrqnpfr'));
-console.log(enko.en2ko('nnnn'));
-// console.log(한글생성(-1,-1,-1));
-// console.log(is한글("f"));
+    // CommonJS module
+    if (typeof exports !== 'undefined') {
+        if (typeof module !== 'undefined' && module.exports) {
+            exports = module.exports = Enko;
+        }
+        exports.Enko = Enko;
+    }
 
-module.exports = Enko;
+    // Register as an anonymous AMD module
+    if (typeof define === 'function' && define.amd) {
+        define([], function () {
+            return Enko;
+        });
+    }
+
+    // if there is a importsScrips object define chance for worker
+    // allows worker to use full Chance functionality with seed
+    if (typeof importScripts !== 'undefined') {
+        enko = new Enko();
+        self.Enko = Enko;
+    }
+
+    // If there is a window object, that at least has a document property,
+    // instantiate and define chance on the window
+    if (typeof window === "object" && typeof window.document === "object") {
+        window.Enko = Enko;
+        window.enko = new Enko();
+    }
+})();
