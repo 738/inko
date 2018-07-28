@@ -12,6 +12,8 @@
     const 첫모음 = 19;
     const 가 = 44032;
     const 힣 = 55203;
+    const ㄱ = 12593;
+    const ㅣ = 12643;
 
     // constructor
     function Inko() {
@@ -181,17 +183,31 @@
         return result;
     }
 
-    Inko.prototype.ko2en = function(input) {
-        // input = ㅗ디ㅣㅐ 재깅
-        let array = [-1, -1, -1, -1, -1];
-        
+    Inko.prototype.ko2en = function (input) {
+        let result = '';
+        if (input === '' || input === undefined) return result;
+        let _분리 = [-1, -1, -1, -1, -1];
+
         for (let i = 0; i < input.length; i++) {
             let _한글 = input[i];
-            if (_한글.charCodeAt() >= 가 && _한글.charCodeAt() <= 힣) {
-                array = this.한글분리(_한글);
+            let _코드 = _한글.charCodeAt();
+            // 가 ~ 힣 사이에 있는 한글이라면
+            if ((_코드 >= 가 && _코드 <= 힣) || (_코드 >= ㄱ && _코드 <= ㅣ)) {
+                _분리 = this.한글분리(_한글);
+            }
+            // 한글이 아니라면
+            else {
+                result += _한글;
+                // 분리 배열 초기화
+                _분리 = [-1, -1, -1, -1, -1];
+            }
+
+            for (let j = 0; j < _분리.length; j++) {
+                if (_분리[j] !== -1)
+                    result += 영어[_분리[j]];
             }
         }
-        
+        return result;
     }
 
     // 초성, 중성, 종성의 charCode를 받아서 합친 한글의 charCode를 반환함
@@ -199,34 +215,65 @@
         return String.fromCharCode(44032 + 초 * 588 + 중 * 28 + 종 + 1);
     }
 
-    // 한글(charCode) 입력값으로 받아서 초성, 중성, 종성 분리해줌
-    Inko.prototype.한글분리 = function (한글) {
-        let 초 = Math.floor((한글 - 가) / 588);
-        let 중 = Math.floor((한글 - 가 - 초 * 588) / 28);
-        let 종 = 한글 - 가 - 초 * 588 - 중 * 28 - 1;
-        let 중1 = 중, 중2 = -1, 종1 = 종, 종2 = -1;
+    // 한글 입력값으로 받아서 초성, 중성, 종성 분리해줌
+    Inko.prototype.한글분리 = function (_한글) {
+        let 코드 = _한글.charCodeAt();
 
-        if (중 == 중성.indexOf("ㅘ")) 중1 = 중성.indexOf("ㅗ"), 중2 = 중성.indexOf("ㅏ");
-        else if (중 == 중성.indexOf("ㅙ")) 중1 = 중성.indexOf("ㅗ"), 중2 = 중성.indexOf("ㅐ");
-        else if (중 == 중성.indexOf("ㅚ")) 중1 = 중성.indexOf("ㅗ"), 중2 = 중성.indexOf("ㅣ");
-        else if (중 == 중성.indexOf("ㅝ")) 중1 = 중성.indexOf("ㅜ"), 중2 = 중성.indexOf("ㅓ");
-        else if (중 == 중성.indexOf("ㅞ")) 중1 = 중성.indexOf("ㅜ"), 중2 = 중성.indexOf("ㅔ");
-        else if (중 == 중성.indexOf("ㅟ")) 중1 = 중성.indexOf("ㅜ"), 중2 = 중성.indexOf("ㅣ");
-        else if (중 == 중성.indexOf("ㅢ")) 중1 = 중성.indexOf("ㅡ"), 중2 = 중성.indexOf("ㅣ");
+        if (코드 >= 가 && 코드 <= 힣) {
+            let 초 = Math.floor((코드 - 가) / 588);
+            let 중 = Math.floor((코드 - 가 - 초 * 588) / 28);
+            let 종 = 코드 - 가 - 초 * 588 - 중 * 28 - 1;
+            let 중1 = 중, 중2 = -1, 종1 = 종, 종2 = -1;
 
-        if (종 == 종성.indexOf("ㄳ")) 종1 = 종성.indexOf("ㄱ"), 종2 = 종성.indexOf("ㅅ");
-        else if (종 == 종성.indexOf("ㄵ")) 종1 = 종성.indexOf("ㄴ"), 종2 = 종성.indexOf("ㅈ");
-        else if (종 == 종성.indexOf("ㄶ")) 종1 = 종성.indexOf("ㄴ"), 종2 = 종성.indexOf("ㅎ");
-        else if (종 == 종성.indexOf("ㄺ")) 종1 = 종성.indexOf("ㄹ"), 종2 = 종성.indexOf("ㄱ");
-        else if (종 == 종성.indexOf("ㄻ")) 종1 = 종성.indexOf("ㄹ"), 종2 = 종성.indexOf("ㅁ");
-        else if (종 == 종성.indexOf("ㄼ")) 종1 = 종성.indexOf("ㄹ"), 종2 = 종성.indexOf("ㅂ");
-        else if (종 == 종성.indexOf("ㄽ")) 종1 = 종성.indexOf("ㄹ"), 종2 = 종성.indexOf("ㅅ");
-        else if (종 == 종성.indexOf("ㄾ")) 종1 = 종성.indexOf("ㄹ"), 종2 = 종성.indexOf("ㅌ");
-        else if (종 == 종성.indexOf("ㄿ")) 종1 = 종성.indexOf("ㄹ"), 종2 = 종성.indexOf("ㅍ");
-        else if (종 == 종성.indexOf("ㅀ")) 종1 = 종성.indexOf("ㄹ"), 종2 = 종성.indexOf("ㅎ");
-        else if (종 == 종성.indexOf("ㅄ")) 종1 = 종성.indexOf("ㅂ"), 종2 = 종성.indexOf("ㅅ");
+            if (중 == 중성.indexOf("ㅘ")) 중1 = 한글.indexOf("ㅗ"), 중2 = 한글.indexOf("ㅏ");
+            else if (중 == 중성.indexOf("ㅙ")) 중1 = 한글.indexOf("ㅗ"), 중2 = 한글.indexOf("ㅐ");
+            else if (중 == 중성.indexOf("ㅚ")) 중1 = 한글.indexOf("ㅗ"), 중2 = 한글.indexOf("ㅣ");
+            else if (중 == 중성.indexOf("ㅝ")) 중1 = 한글.indexOf("ㅜ"), 중2 = 한글.indexOf("ㅓ");
+            else if (중 == 중성.indexOf("ㅞ")) 중1 = 한글.indexOf("ㅜ"), 중2 = 한글.indexOf("ㅔ");
+            else if (중 == 중성.indexOf("ㅟ")) 중1 = 한글.indexOf("ㅜ"), 중2 = 한글.indexOf("ㅣ");
+            else if (중 == 중성.indexOf("ㅢ")) 중1 = 한글.indexOf("ㅡ"), 중2 = 한글.indexOf("ㅣ");
 
-        return [초, 중1, 중2, 종1, 종2];
+            if (종 == 종성.indexOf("ㄳ")) 종1 = 한글.indexOf("ㄱ"), 종2 = 한글.indexOf("ㅅ");
+            else if (종 == 종성.indexOf("ㄵ")) 종1 = 한글.indexOf("ㄴ"), 종2 = 한글.indexOf("ㅈ");
+            else if (종 == 종성.indexOf("ㄶ")) 종1 = 한글.indexOf("ㄴ"), 종2 = 한글.indexOf("ㅎ");
+            else if (종 == 종성.indexOf("ㄺ")) 종1 = 한글.indexOf("ㄹ"), 종2 = 한글.indexOf("ㄱ");
+            else if (종 == 종성.indexOf("ㄻ")) 종1 = 한글.indexOf("ㄹ"), 종2 = 한글.indexOf("ㅁ");
+            else if (종 == 종성.indexOf("ㄼ")) 종1 = 한글.indexOf("ㄹ"), 종2 = 한글.indexOf("ㅂ");
+            else if (종 == 종성.indexOf("ㄽ")) 종1 = 한글.indexOf("ㄹ"), 종2 = 한글.indexOf("ㅅ");
+            else if (종 == 종성.indexOf("ㄾ")) 종1 = 한글.indexOf("ㄹ"), 종2 = 한글.indexOf("ㅌ");
+            else if (종 == 종성.indexOf("ㄿ")) 종1 = 한글.indexOf("ㄹ"), 종2 = 한글.indexOf("ㅍ");
+            else if (종 == 종성.indexOf("ㅀ")) 종1 = 한글.indexOf("ㄹ"), 종2 = 한글.indexOf("ㅎ");
+            else if (종 == 종성.indexOf("ㅄ")) 종1 = 한글.indexOf("ㅂ"), 종2 = 한글.indexOf("ㅅ");
+
+            // 복모음이 아니라면
+            if (중2 === -1) 중1 = 한글.indexOf(중성[중]);
+
+            // 복자음이 아니라면
+            if (종2 === -1) 종1 = 한글.indexOf(종성[종]);
+
+            return [초, 중1, 중2, 종1, 종2];
+        } else if (코드 >= ㄱ && 코드 <= ㅣ) {
+            if (초성.indexOf(_한글) > -1) {
+                let 초 = 한글.indexOf(_한글);
+                return [초, -1, -1, -1, -1];
+            } else if (중성.indexOf(_한글) > -1) {
+                let 중 = 중성.indexOf(_한글);
+                let 중1 = 중, 중2 = -1;
+                if (중 == 중성.indexOf("ㅘ")) 중1 = 한글.indexOf("ㅗ"), 중2 = 한글.indexOf("ㅏ");
+                else if (중 == 중성.indexOf("ㅙ")) 중1 = 한글.indexOf("ㅗ"), 중2 = 한글.indexOf("ㅐ");
+                else if (중 == 중성.indexOf("ㅚ")) 중1 = 한글.indexOf("ㅗ"), 중2 = 한글.indexOf("ㅣ");
+                else if (중 == 중성.indexOf("ㅝ")) 중1 = 한글.indexOf("ㅜ"), 중2 = 한글.indexOf("ㅓ");
+                else if (중 == 중성.indexOf("ㅞ")) 중1 = 한글.indexOf("ㅜ"), 중2 = 한글.indexOf("ㅔ");
+                else if (중 == 중성.indexOf("ㅟ")) 중1 = 한글.indexOf("ㅜ"), 중2 = 한글.indexOf("ㅣ");
+                else if (중 == 중성.indexOf("ㅢ")) 중1 = 한글.indexOf("ㅡ"), 중2 = 한글.indexOf("ㅣ");
+
+                // 복모음이 아니라면
+                if (중2 === -1) 중1 = 한글.indexOf(중성[중]);
+
+                return [-1, 중1, 중2, -1, -1];
+            }
+        }
+        return [-1, -1, -1, -1, -1];
     }
 
     Inko.prototype.is한글 = function (char) {

@@ -23,10 +23,10 @@ describe('inko', () => {
     });
 
     it('한글분리', () => {
-        assert.deepEqual(inko.한글분리('님'.charCodeAt()), [2, 20, -1, 15, -1]);
-        assert.deepEqual(inko.한글분리('가'.charCodeAt()), [0, 0, -1, -1, -1]);
-        assert.deepEqual(inko.한글분리('뷁'.charCodeAt()), [7, 13, 5, 7, 0]);
-        assert.deepEqual(inko.한글분리('없'.charCodeAt()), [11, 4, -1, 16, 18]);
+        assert.deepEqual(inko.한글분리('님'), [2, 32, -1, 6, -1]);
+        assert.deepEqual(inko.한글분리('가'), [0, 19, -1, -1, -1]);
+        assert.deepEqual(inko.한글분리('뷁'), [7, 29, 24, 5, 0]);
+        assert.deepEqual(inko.한글분리('없'), [11, 23, -1, 7, 9]);
     });
 
     it('영타 -> 한글', () => {
