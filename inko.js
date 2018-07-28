@@ -1,6 +1,6 @@
-//  Enko.js 1.0.0
+//  Inko.js 1.0.0
 //  (c) 2018 Jon Jee
-//  Enko may be freely distributed or modified under the MIT license.
+//  Inko may be freely distributed or modified under the MIT license.
 
 (function () {
     // constants
@@ -12,11 +12,11 @@
     const 첫모음 = 19;
 
     // constructor
-    function Enko() {
+    function Inko() {
         return this;
     }
 
-    Enko.prototype.en2ko = function (input) {
+    Inko.prototype.en2ko = function (input) {
         let result = '';
         if (input === '' || input === undefined) return result;
         let _초성 = -1, _중성 = -1, _종성 = -1;
@@ -179,11 +179,15 @@
         return result;
     }
 
-    Enko.prototype.한글생성 = function (초, 중, 종) {
+    Inko.prototype.ko2en = function(input) {
+
+    }
+
+    Inko.prototype.한글생성 = function (초, 중, 종) {
         return String.fromCharCode(44032 + 초 * 588 + 중 * 28 + 종 + 1);
     }
 
-    Enko.prototype.is한글 = function (char) {
+    Inko.prototype.is한글 = function (char) {
         if (char.length > 1) throw new Error("한글자가 아닙니다.");
         return /[ㄱ-ㅎ|ㅏ-ㅣ|기-힣]/.test(char);
     }
@@ -191,29 +195,29 @@
     // CommonJS module
     if (typeof exports !== 'undefined') {
         if (typeof module !== 'undefined' && module.exports) {
-            exports = module.exports = Enko;
+            exports = module.exports = Inko;
         }
-        exports.Enko = Enko;
+        exports.Inko = Inko;
     }
 
     // Register as an anonymous AMD module
     if (typeof define === 'function' && define.amd) {
         define([], function () {
-            return Enko;
+            return Inko;
         });
     }
 
     // if there is a importsScrips object define chance for worker
     // allows worker to use full Chance functionality with seed
     if (typeof importScripts !== 'undefined') {
-        enko = new Enko();
-        self.Enko = Enko;
+        inko = new Inko();
+        self.Inko = Inko;
     }
 
     // If there is a window object, that at least has a document property,
     // instantiate and define chance on the window
     if (typeof window === "object" && typeof window.document === "object") {
-        window.Enko = Enko;
-        window.enko = new Enko();
+        window.Inko = Inko;
+        window.inko = new Inko();
     }
 })();

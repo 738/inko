@@ -3,18 +3,29 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <script type="text/javascript" src="../enko.js"></script>
+    <script type="text/javascript" src="../inko.js"></script>
 </head>
 <body>
 <script>
-    var enko = new Enko();
+    var inko = new Inko();
     function englishToKorean(text) {
-        // var input = document.getElementById("englishInput").value;
-        document.getElementById("koreanOutput").innerHTML = enko.en2ko(text);
+        document.getElementById("koreanOutput").innerHTML = inko.en2ko(text);
+    }
+
+    function koreanToEnglish(text) {
+        document.getElementById("englishOutput").innerHTML = inko.ko2en(text);
     }
 </script>
+<h1>inko.js EXAMPLE HTML</h1>
+<h2>영타 -> 한글</h2>
 input: <textarea id="englishInput" type="text" onkeyup="englishToKorean(this.value)" value=""></textarea>
 <br />
 output: <div id="koreanOutput"></div>
+
+<h2>한타 -> 영어</h2>
+input: <textarea id="koreanInput" type="text" onkeyup="koreanToEnglish(this.value)" value=""></textarea>
+<br />
+output: <div id="enlishOutput"></div>
+
 </body>
 </html>
