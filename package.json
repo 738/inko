@@ -1,6 +1,6 @@
 {
   "name": "inko",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "영어로 쳐야할 글을 한글로 쳤을 때, 혹은 한글로 쳐야할 글을 영어로 쳤을 때 변환해주는 기능을 가진 오픈소스입니다.",
   "main": "inko.js",
   "directories": {
