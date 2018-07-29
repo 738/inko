@@ -3,8 +3,10 @@
 [![npm](https://img.shields.io/npm/v/inko.svg)](https://npmjs.com/package/inko)
 
 ## General
-- Since 2018.05.02
 - 영어로 쳐야할 글을 한글로 쳤을 때, 혹은 한글로 쳐야할 글을 영어로 쳤을 때 변환해주는 기능을 가진 오픈소스입니다.
+
+## Dependent tools
+- [Inko CLI](https://github.com/JonJee/inko-cli) - Use Inko on the command line.
 
 ## How to install
 ```
