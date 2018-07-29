@@ -1,4 +1,5 @@
 # inko.js (잉꼬JS)
+[![GitHub license](https://img.shields.io/github/license/jonjee/inko.svg)](https://github.com/jonjee/inko/blob/master/LICENSE)
 [![npm](https://img.shields.io/npm/v/inko.svg)](https://npmjs.com/package/inko)
 
 ## General
