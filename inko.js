@@ -1,6 +1,7 @@
 //  Inko.js 1.0.0
 //  (c) 2018 Jon Jee
 //  Inko may be freely distributed or modified under the MIT license.
+var pjson = require('./package.json');
 
 (function () {
     // constants
@@ -20,7 +21,7 @@
         return this;
     }
 
-    Inko.prototype.VERSION = '1.0.0';
+    Inko.prototype.VERSION = pjson.version;
 
     Inko.prototype.en2ko = function (input) {
         let result = '';

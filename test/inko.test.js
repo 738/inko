@@ -3,6 +3,7 @@ var Inko = require('../inko');
 var inko = new Inko();
 
 describe('inko', () => {
+    console.log(`The version of inkojs is ${inko.VERSION}`);
     it('is한글', () => {
         한글배열 = ['ㄱ', 'ㄴ', 'ㅇ', 'ㅎ', 'ㅍ', 'ㅋ', '기', '긹', '닙', 'ㅜ', 'ㅢ', '뷁', '챀', '팥'];
         다른배열 = ['s', '1', 'D', '#', 'R', 'B', 'C', '9', 'a', ';', '=', '6', '3', 'P'];
