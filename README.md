@@ -34,10 +34,10 @@ inko.ko2en('ㅗ디ㅣㅐ 재깅!');
 ```
 
 ## TODO LIST
-[x] develop @types/inko module for typescript
-[x] add gulp file to minify inko.js or do something
-[x] launch inkojs official introduction website
-[x] improve inkojs logo
+- [x] develop @types/inko module for typescript
+- [x] add gulp file to minify inko.js or do something
+- [x] launch inkojs official introduction website
+- [x] improve inkojs logo
 
 ## How To Contribute
 이 오픈소스 프로젝트에 누구나 기여할 수 있습니다. 기여하고 싶은 분들은 이 레포지토리를 포크한 후 풀리퀘스트 요청해주세요!
