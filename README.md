@@ -3,6 +3,7 @@
 
 [![GitHub license](https://img.shields.io/github/license/jonjee/inko.svg)](https://github.com/jonjee/inko/blob/master/LICENSE)
 [![npm](https://img.shields.io/npm/v/inko.svg)](https://npmjs.com/package/inko)
+[![jsdelivr](https://data.jsdelivr.com/v1/package/npm/inko/badge)](https://www.jsdelivr.com/package/npm/inko)
 
 ## General
 - 영어로 쳐야할 글을 한글로 쳤을 때, 혹은 한글로 쳐야할 글을 영어로 쳤을 때 변환해주는 기능을 가진 오픈소스입니다.
