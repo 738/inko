@@ -8,6 +8,9 @@
 ## General
 - 영어로 쳐야할 글을 한글로 쳤을 때, 혹은 한글로 쳐야할 글을 영어로 쳤을 때 변환해주는 기능을 가진 오픈소스입니다.
 
+## Release Note
+- v1.0.3 (2018.08.07) : [#7](https://github.com/JonJee/inko/issues/7) 영타 -> 한글로 변환 시켜주는 로직 수정. 알파벳 소문자 26개, 대문자 26개 총 52개에 맞춰서 한글과 매핑함.
+
 ## Dependent tools
 - [Inko CLI](https://github.com/JonJee/inko-cli) - Use Inko on the command line.
 
