@@ -24,10 +24,10 @@ describe('inko', () => {
     });
 
     it('한글분리', () => {
-        assert.deepEqual(inko.한글분리('님'), [2, 32, -1, 6, -1]);
-        assert.deepEqual(inko.한글분리('가'), [0, 19, -1, -1, -1]);
-        assert.deepEqual(inko.한글분리('뷁'), [7, 29, 24, 5, 0]);
-        assert.deepEqual(inko.한글분리('없'), [11, 23, -1, 7, 9]);
+        assert.deepEqual(inko.한글분리('님'), [2, 41, -1, 6, -1]);
+        assert.deepEqual(inko.한글분리('가'), [0, 28, -1, -1, -1]);
+        assert.deepEqual(inko.한글분리('뷁'), [7, 38, 33, 5, 0]);
+        assert.deepEqual(inko.한글분리('없'), [11, 32, -1, 7, 9]);
     });
 
     it('영타 -> 한글', () => {
@@ -47,6 +47,8 @@ describe('inko', () => {
         assert.equal(inko.en2ko('alclwldksgrhtjdi rmfjf tn djqtdmf rjtdlek.'), '미치지않고서야 그럴 수 없을 것이다.');
         assert.equal(inko.en2ko('difralqtWyfq'), '얅밊쬷');
         assert.equal(inko.en2ko('diffkfldiffkdtud'), '얄라리얄랑셩');
+        assert.equal(inko.en2ko('DKSSUD'), '안녕');
+        assert.equal(inko.en2ko('dUDn'), '여우');
     });
 
     it('한타 -> 영어', () => {
