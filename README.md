@@ -1,4 +1,7 @@
-<h1 align="center"><img height="150" src="https://github.com/JonJee/inko/blob/master/images/inko_logo.png?raw=true" /><br> Inko.js</h1>
+<h1 align="center">
+    <img height="250" src="https://github.com/JonJee/inko/blob/master/images/inko_logo.png?raw=true" />
+    <br> Inko.js
+</h1>
 
 <p align="center">
   <a href="https://github.com/jonjee/inko/blob/master/LICENSE">
