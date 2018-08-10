@@ -1,9 +1,23 @@
-# inko.js (잉꼬JS)
-![inko_logo](https://github.com/JonJee/inko/blob/master/images/inko_logo.png?raw=true)
+<h1 align="center"><img height="150" src="https://github.com/JonJee/inko/blob/master/images/inko_logo.png?raw=true" /><br> Inko.js</h1>
 
-[![GitHub license](https://img.shields.io/github/license/jonjee/inko.svg)](https://github.com/jonjee/inko/blob/master/LICENSE)
-[![npm](https://img.shields.io/npm/v/inko.svg)](https://npmjs.com/package/inko)
-[![jsdelivr](https://data.jsdelivr.com/v1/package/npm/inko/badge)](https://www.jsdelivr.com/package/npm/inko)
+<p align="center">
+  <a href="https://github.com/jonjee/inko/blob/master/LICENSE">
+    <img src="https://img.shields.io/github/license/jonjee/inko.svg" />
+  </a>
+  <a href="https://npmjs.com/package/inko">
+    <img src="https://img.shields.io/npm/v/inko.svg" alt="version" />
+  </a>
+  <a href="https://www.jsdelivr.com/package/npm/inko">
+    <img src="https://data.jsdelivr.com/v1/package/npm/inko/badge" />
+  </a>
+</p>
+
+<p align="center">
+  <b>English into Korea Converter Opensource library</b></br>
+  <sub>It converts mistakenly misspelled english letters into korean or conversely<sub>
+</p>
+
+<br />
 
 ## General
 - 영어로 쳐야할 글을 한글로 쳤을 때, 혹은 한글로 쳐야할 글을 영어로 쳤을 때 변환해주는 기능을 가진 오픈소스입니다.
