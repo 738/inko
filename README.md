@@ -51,7 +51,7 @@ yarn add inko
 
 CDN
 ```html
-<script src="https://cdn.jsdelivr.net/npm/inko/inko.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/inko@1.0.5/inko.min.js"></script>
 ```
 
 Bower
