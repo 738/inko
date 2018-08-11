@@ -1,4 +1,3 @@
-//  Inko.js 1.0.0
 //  (c) 2018 Jon Jee
 //  Inko may be freely distributed or modified under the MIT license.
 var pjson = require('./package.json');
