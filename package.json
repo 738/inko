@@ -1,7 +1,11 @@
 {
   "name": "inko",
   "version": "1.0.3",
-  "description": "영어로 쳐야할 글을 한글로 쳤을 때, 혹은 한글로 쳐야할 글을 영어로 쳤을 때 변환해주는 기능을 가진 오픈소스입니다.",
+  "description": "영타를 한글로 쳤을 때, 혹은 한타를 영어로 변환해주는 기능을 가진 자바스크립트 오픈소스 라이브러리입니다.",
+  "bugs": {
+    "url": "https://github.com/jonjee/inko/issues",
+    "email": "jydrogen@gmail.com"
+  },
   "main": "inko.js",
   "directories": {
     "test": "test"
@@ -9,6 +13,20 @@
   "scripts": {
     "test": "mocha"
   },
+  "keywords": [
+    "inko",
+    "korean",
+    "english",
+    "convert",
+    "converter",
+    "korea",
+    "잉꼬",
+    "한글",
+    "영타",
+    "한타",
+    "영어",
+    "변환"
+  ],
   "engines": {
     "node": ">= 0.4.0"
   },
@@ -20,5 +38,8 @@
   "license": "MIT",
   "dependencies": {
     "mocha": "^5.1.1"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1"
   }
 }
