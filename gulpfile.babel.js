@@ -7,15 +7,6 @@ import mocha from 'gulp-mocha';
 import rename from 'gulp-rename';
 import sourcemaps from 'gulp-sourcemaps';
 import pump from 'pump';
-import del from 'del';
-
-const DIR = {
-    DEST: 'dist'
-};
-
-gulp.task('clean', () => {
-    return del.sync([DIR.DEST]);
-});
 
 gulp.task('test', () =>
     gulp.src('test/**/*.js')
@@ -30,10 +21,10 @@ gulp.task('watch', () => {
 gulp.task('build', (cb) => {
     pump([gulp.src('inko.js'), sourcemaps.init(),
         rename('inko.min.js'), uglify(), sourcemaps.write('.'),
-        gulp.dest('dist'),
+        gulp.dest('./'),
     ], cb);
 })
 
-gulp.task('default', ['watch', 'clean', 'test'], () => {
+gulp.task('default', ['watch', 'test'], () => {
     gutil.log('Gulp is running...');
 });
