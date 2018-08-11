@@ -32,8 +32,29 @@
 - [Inko CLI](https://github.com/JonJee/inko-cli) - Use Inko on the command line.
 
 ## How to install
+
+### npm
+
+```bash
+npm install inko
 ```
-npm install --save inko
+
+### yarn
+
+```bash
+yarn add inko
+```
+
+### As Browser module
+
+CDN
+```html
+<script src="https://cdn.jsdelivr.net/npm/inko/inko.js"></script>
+```
+
+Bower
+```bash
+bower install inko
 ```
 
 ## How to use
@@ -55,9 +76,9 @@ inko.ko2en('ㅗ디ㅣㅐ 재깅!');
 ```
 
 ## TODO LIST
-- [x] develop @types/inko module for typescript
+- [ ] develop @types/inko module for typescript
 - [x] add gulp file to minify inko.js or do something
-- [x] launch inkojs official introduction website
+- [ ] launch inkojs official introduction website
 - [x] improve inkojs logo
 
 ## How To Contribute
