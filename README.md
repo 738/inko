@@ -87,4 +87,4 @@ inko.ko2en('ㅗ디ㅣㅐ 재깅!');
 이 오픈소스 프로젝트에 누구나 기여할 수 있습니다. 기여하고 싶은 분들은 이 레포지토리를 포크한 후 풀리퀘스트 요청해주세요!
 
 ## License
-MIT
+Inko.js is released under the MIT License. See [LICENSE](https://github.com/jonjee/inko/blob/master/LICENSE) file for details.
