@@ -4,14 +4,16 @@
 </h1>
 
 <p align="center">
-  <a href="https://github.com/jonjee/inko/blob/master/LICENSE">
-    <img src="https://img.shields.io/github/license/jonjee/inko.svg" />
-  </a>
+  <img src="https://img.shields.io/teamcity/codebetter/bt428.svg" />
+  <img src="https://img.shields.io/github/stars/jonjee/inko.svg?style=social&label=Stars" />
   <a href="https://npmjs.com/package/inko">
     <img src="https://img.shields.io/npm/v/inko.svg" alt="version" />
   </a>
   <a href="https://www.jsdelivr.com/package/npm/inko">
     <img src="https://data.jsdelivr.com/v1/package/npm/inko/badge" />
+  </a>
+  <a href="https://github.com/jonjee/inko/blob/master/LICENSE">
+    <img src="https://img.shields.io/github/license/jonjee/inko.svg" />
   </a>
 </p>
 
