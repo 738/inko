@@ -22,7 +22,7 @@
 
 <br />
 
-## General
+# Getting Started
 - 영타를 한글로 쳤을 때, 혹은 한타를 영어로 변환해주는 기능을 가진 자바스크립트 오픈소스 라이브러리입니다.
 
 ## Release Note
