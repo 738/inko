@@ -33,7 +33,7 @@
 ## Dependent tools
 - [Inko CLI](https://github.com/JonJee/inko-cli) - Use Inko on the command line.
 
-## How to install
+## Installation
 
 ### npm
 
@@ -59,19 +59,19 @@ Bower
 bower install inko
 ```
 
-## How to use
+## Usage
 ```
 var Inko = require('inko');
 var inko = Inko();
 ```
 
-### 영타 -> 한글
+### 영어 → 한글
 ```
 inko.en2ko('dkssudgktpdy tptkd!');
 // 안녕하세요 세상!
 ```
 
-### 한타 -> 영문
+### 한글 → 영어
 ```
 inko.ko2en('ㅗ디ㅣㅐ 재깅!');
 // hello world!
@@ -83,7 +83,7 @@ inko.ko2en('ㅗ디ㅣㅐ 재깅!');
 - [ ] launch inkojs official introduction website
 - [x] improve inkojs logo
 
-## How To Contribute
+## Contributing
 이 오픈소스 프로젝트에 누구나 기여할 수 있습니다. 기여하고 싶은 분들은 이 레포지토리를 포크한 후 풀리퀘스트 요청해주세요!
 
 ## License
