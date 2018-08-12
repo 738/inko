@@ -24,6 +24,7 @@
 
 # Getting Started
 - 영타를 한글로 쳤을 때, 혹은 한타를 영어로 변환해주는 기능을 가진 자바스크립트 오픈소스 라이브러리입니다.
+- [Inko Offical Website](https://inko.holy.kiwi) has been launched!
 
 ## Release Note
 - v1.0.3 (2018.08.07) : [#7](https://github.com/JonJee/inko/issues/7) 영타 -> 한글로 변환 시켜주는 로직 수정. 알파벳 소문자 26개, 대문자 26개 총 52개에 맞춰서 한글과 매핑함.
@@ -80,7 +81,7 @@ inko.ko2en('ㅗ디ㅣㅐ 재깅!');
 ## TODO LIST
 - [ ] develop @types/inko module for typescript
 - [x] add gulp file to minify inko.js or do something
-- [ ] launch inkojs official introduction website
+- [x] launch inkojs official introduction website
 - [x] improve inkojs logo
 
 ## Contributing
