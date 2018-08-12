@@ -21,7 +21,7 @@
     "영어",
     "변환"
   ],
-  "homepage": "https://github.com/jonjee/inko",
+  "homepage": "https://inko.holy.kiwi",
   "ignore": [
     "**/.*",
     "node_modules",

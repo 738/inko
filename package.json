@@ -36,6 +36,7 @@
   },
   "author": "Jon Jee",
   "license": "MIT",
+  "homepage": "https://inko.holy.kiwi",
   "dependencies": {
     "mocha": "^5.1.1"
   },
