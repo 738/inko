@@ -18,8 +18,7 @@
 </p>
 
 <p align="center">
-  <b>English into Korea Converter Opensource library</b></br>
-  <sub>It converts mistakenly misspelled english letters into korean or conversely<sub>
+  <b>Open Source Library, Converting Misspelled English characters into Korean letters (& vice versa)</b></br>
 </p>
 
 <br />
