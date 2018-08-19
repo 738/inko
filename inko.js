@@ -3,16 +3,16 @@
 
 (function () {
     // constants
-    const 영어 = "rRseEfaqQtTdwWczxvgASDFGZXCVkoiOjpuPhynbmlYUIHJKLBNM";                         // 33 + 19개
-    const 한글 = "ㄱㄲㄴㄷㄸㄹㅁㅂㅃㅅㅆㅇㅈㅉㅊㅋㅌㅍㅎㅁㄴㅇㄹㅎㅋㅌㅊㅍㅏㅐㅑㅒㅓㅔㅕㅖㅗㅛㅜㅠㅡㅣㅛㅕㅑㅗㅓㅏㅣㅠㅜㅡ";      // 33 + 19개
-    const 초성 = "ㄱㄲㄴㄷㄸㄹㅁㅂㅃㅅㅆㅇㅈㅉㅊㅋㅌㅍㅎ";                          // 19개
-    const 중성 = "ㅏㅐㅑㅒㅓㅔㅕㅖㅗㅘㅙㅚㅛㅜㅝㅞㅟㅠㅡㅢㅣ";                       // 21개
-    const 종성 = "ㄱㄲㄳㄴㄵㄶㄷㄹㄺㄻㄼㄽㄾㄿㅀㅁㅂㅄㅅㅆㅇㅈㅊㅋㅌㅍㅎ";              // 27개
-    const 첫모음 = 28;
-    const 가 = 44032;
-    const 힣 = 55203;
-    const ㄱ = 12593;
-    const ㅣ = 12643;
+    var 영어 = "rRseEfaqQtTdwWczxvgASDFGZXCVkoiOjpuPhynbmlYUIHJKLBNM";                         // 33 + 19개
+    var 한글 = "ㄱㄲㄴㄷㄸㄹㅁㅂㅃㅅㅆㅇㅈㅉㅊㅋㅌㅍㅎㅁㄴㅇㄹㅎㅋㅌㅊㅍㅏㅐㅑㅒㅓㅔㅕㅖㅗㅛㅜㅠㅡㅣㅛㅕㅑㅗㅓㅏㅣㅠㅜㅡ";      // 33 + 19개
+    var 초성 = "ㄱㄲㄴㄷㄸㄹㅁㅂㅃㅅㅆㅇㅈㅉㅊㅋㅌㅍㅎ";                          // 19개
+    var 중성 = "ㅏㅐㅑㅒㅓㅔㅕㅖㅗㅘㅙㅚㅛㅜㅝㅞㅟㅠㅡㅢㅣ";                       // 21개
+    var 종성 = "ㄱㄲㄳㄴㄵㄶㄷㄹㄺㄻㄼㄽㄾㄿㅀㅁㅂㅄㅅㅆㅇㅈㅊㅋㅌㅍㅎ";              // 27개
+    var 첫모음 = 28;
+    var 가 = 44032;
+    var 힣 = 55203;
+    var ㄱ = 12593;
+    var ㅣ = 12643;
 
     // constructor
     function Inko() {
@@ -22,14 +22,14 @@
     Inko.prototype.VERSION = '1.0.5';
 
     Inko.prototype.en2ko = function (input) {
-        let result = '';
+        var result = '';
         if (input === '' || input === undefined) return result;
-        let _초성 = -1, _중성 = -1, _종성 = -1;
+        var _초성 = -1, _중성 = -1, _종성 = -1;
 
-        for (let i = 0; i < input.length; i++) {
-            let char = input[i];
-            let index = 영어.indexOf(char);
-            let _한글 = 한글[index];
+        for (var i = 0; i < input.length; i++) {
+            var char = input[i];
+            var index = 영어.indexOf(char);
+            var _한글 = 한글[index];
             // 한글이 아니라면
             if (index === -1) {
                 // 남아있는 한글 처리
@@ -185,13 +185,13 @@
     }
 
     Inko.prototype.ko2en = function (input) {
-        let result = '';
+        var result = '';
         if (input === '' || input === undefined) return result;
-        let _분리 = [-1, -1, -1, -1, -1];
+        var _분리 = [-1, -1, -1, -1, -1];
 
-        for (let i = 0; i < input.length; i++) {
-            let _한글 = input[i];
-            let _코드 = _한글.charCodeAt();
+        for (var i = 0; i < input.length; i++) {
+            var _한글 = input[i];
+            var _코드 = _한글.charCodeAt();
             // 가 ~ 힣 사이에 있는 한글이라면
             if ((_코드 >= 가 && _코드 <= 힣) || (_코드 >= ㄱ && _코드 <= ㅣ)) {
                 _분리 = this.한글분리(_한글);
@@ -203,7 +203,7 @@
                 _분리 = [-1, -1, -1, -1, -1];
             }
 
-            for (let j = 0; j < _분리.length; j++) {
+            for (var j = 0; j < _분리.length; j++) {
                 if (_분리[j] !== -1)
                     result += 영어[_분리[j]];
             }
@@ -218,13 +218,13 @@
 
     // 한글 입력값으로 받아서 초성, 중성, 종성 분리해줌
     Inko.prototype.한글분리 = function (_한글) {
-        let 코드 = _한글.charCodeAt();
+        var 코드 = _한글.charCodeAt();
 
         if (코드 >= 가 && 코드 <= 힣) {
-            let 초 = Math.floor((코드 - 가) / 588);
-            let 중 = Math.floor((코드 - 가 - 초 * 588) / 28);
-            let 종 = 코드 - 가 - 초 * 588 - 중 * 28 - 1;
-            let 중1 = 중, 중2 = -1, 종1 = 종, 종2 = -1;
+            var 초 = Math.floor((코드 - 가) / 588);
+            var 중 = Math.floor((코드 - 가 - 초 * 588) / 28);
+            var 종 = 코드 - 가 - 초 * 588 - 중 * 28 - 1;
+            var 중1 = 중, 중2 = -1, 종1 = 종, 종2 = -1;
 
             if (중 == 중성.indexOf("ㅘ")) 중1 = 한글.indexOf("ㅗ"), 중2 = 한글.indexOf("ㅏ");
             else if (중 == 중성.indexOf("ㅙ")) 중1 = 한글.indexOf("ㅗ"), 중2 = 한글.indexOf("ㅐ");
@@ -255,11 +255,11 @@
             return [초, 중1, 중2, 종1, 종2];
         } else if (코드 >= ㄱ && 코드 <= ㅣ) {
             if (초성.indexOf(_한글) > -1) {
-                let 초 = 한글.indexOf(_한글);
+                var 초 = 한글.indexOf(_한글);
                 return [초, -1, -1, -1, -1];
             } else if (중성.indexOf(_한글) > -1) {
-                let 중 = 중성.indexOf(_한글);
-                let 중1 = 중, 중2 = -1;
+                var 중 = 중성.indexOf(_한글);
+                var 중1 = 중, 중2 = -1;
                 if (중 == 중성.indexOf("ㅘ")) 중1 = 한글.indexOf("ㅗ"), 중2 = 한글.indexOf("ㅏ");
                 else if (중 == 중성.indexOf("ㅙ")) 중1 = 한글.indexOf("ㅗ"), 중2 = 한글.indexOf("ㅐ");
                 else if (중 == 중성.indexOf("ㅚ")) 중1 = 한글.indexOf("ㅗ"), 중2 = 한글.indexOf("ㅣ");
