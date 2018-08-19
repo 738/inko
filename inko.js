@@ -14,6 +14,42 @@
     var ㄱ = 12593;
     var ㅣ = 12643;
 
+    var 영어index = (function (en) {
+        var x = {};
+        for (var i = 0; i < en.length; ++i) x[en[i]] = i;
+        return x;
+    }(영어));
+
+    var 한글index = (function (kr) {
+        var x = {};
+        for (var i = 0; i < kr.length; ++i) x[kr[i]] = i;
+        return x;
+    }(한글));
+
+    var connectableConsonant = {
+        'ㄱㅅ': 'ㄳ',
+        'ㄴㅈ': 'ㄵ',
+        'ㄴㅎ': 'ㄶ',
+        'ㄹㄱ': 'ㄺ',
+        'ㄹㅁ': 'ㄻ',
+        'ㄹㅂ': 'ㄼ',
+        'ㄹㅅ': 'ㄽ',
+        'ㄹㅌ': 'ㄾ',
+        'ㄹㅍ': 'ㄿ',
+        'ㄹㅎ': 'ㅀ',
+        'ㅂㅅ': 'ㅄ'
+    };
+
+    var connectableVowel = {
+        'ㅗㅏ': 'ㅘ',
+        'ㅗㅐ': 'ㅙ',
+        'ㅗㅣ': 'ㅚ',
+        'ㅜㅓ': 'ㅝ',
+        'ㅜㅔ': 'ㅞ',
+        'ㅜㅣ': 'ㅟ',
+        'ㅡㅣ': 'ㅢ'
+    };
+
     // constructor
     function Inko() {
         return this;
@@ -184,6 +220,108 @@
         return result;
     }
 
+    Inko.prototype.en2kr = function (eng) {
+        var self = this;
+        var stateLength = [0, 1, 1, 2, 2, 2, 3, 3, 4, 4, 5];
+        var transitions = [
+            [1, 1, 2, 2], // 0, EMPTY
+            [3, 1, 4, 4], // 1, 자
+            [1, 1, 5, 2], // 2, 모
+            [3, 1, 7, 7], // 3, 자자
+            [6, 1, 7, 2], // 4, 자모
+            [1, 1, 2, 2], // 5, 모모
+            [9, 1, 4, 4], // 6, 자모자
+            [9, 1, 2, 2], // 7, 자모모
+            [1, 1, 4, 4], // 8, 자모자자 
+            [10, 1, 4, 4],// 9, 자모모자
+            [1, 1, 4, 4], // 10, 자모모자자
+        ];
+
+        var last = function (list) {
+            return list[list.length - 1];
+        };
+
+        var combine = function (arr) {
+            var group = [];
+            arr.forEach(function (cur, i) {
+                if (i === 0 ||
+                    (한글index[last(group)[0]] < 첫모음 !== cur < 첫모음)) {
+                    group.push([한글[cur]]);
+                } else {
+                    last(group).push(한글[cur]);
+                }
+            });
+
+            var charSet = [초성, 중성, 종성];
+            var code = [-1, -1, -1];
+
+            group.map(function (arr) {
+                return arr.join('')
+            }).forEach(function (w) {
+                for (var i = 0; i < 3; ++i) {
+                    if (code[i] !== -1) continue;
+                    var idx = charSet[i].indexOf(
+                        connectableConsonant[w] ||
+                        connectableVowel[w] ||
+                        w);
+                    if (idx !== -1) {
+                        code[i] = idx;
+                        break;
+                    }
+                }
+            });
+
+            return self.한글생성.apply(this, code);
+        };
+
+        return (function () {
+            var length = eng.length;
+            var last = -1;
+            var result = [];
+            var state = 0;
+            var tmp = [];
+
+            var flush = function () {
+                if (tmp.length > 0) result.push(combine(tmp));
+                tmp = [];
+            };
+
+            for (var i = 0; i < length; ++i) {
+                var chr = eng[i];
+                var cur = 영어index[chr];
+                if (typeof cur === 'undefined') {
+                    state = 0;
+                    flush();
+                    result.push(chr);
+                } else {
+                    var transition = (function () {
+                        var c = (한글[last] || '') + 한글[cur];
+                        var lastIsVowel = last >= 첫모음;
+                        var curIsVowel = cur >= 첫모음;
+                        if (!curIsVowel) {
+                            if (lastIsVowel) {
+                                return [4 /* ㄸ */, 8 /* ㅃ */, 13 /* ㅉ */]
+                                    .indexOf(cur) === -1 ? 0 : 1
+                            }
+                            return connectableConsonant[c] ? 0 : 1
+                        } else if (curIsVowel) {
+                            return connectableVowel[c] ? 2 : 3
+                        }
+                        return 2;
+                    }());
+                    var nxtState = transitions[state][transition];
+                    tmp.push(cur);
+                    var diff = tmp.length - stateLength[nxtState];
+                    if (diff) result.push(combine(tmp.splice(0, diff)));
+                    state = nxtState;
+                    last = cur;
+                }
+            }
+            flush();
+            return result.join('');
+        }());
+    };
+
     Inko.prototype.ko2en = function (input) {
         var result = '';
         if (input === '' || input === undefined) return result;
@@ -213,6 +351,13 @@
 
     // 초성, 중성, 종성의 charCode를 받아서 합친 한글의 charCode를 반환함
     Inko.prototype.한글생성 = function (초, 중, 종) {
+        if (초 === -1 && 중 === -1) {
+            return String.fromCharCode(종 + 0x3131);
+        } else if (초 !== -1 && 중 === -1) {
+            return String.fromCharCode(초 + 0x3131);
+        } else if (초 === -1 && 중 !== -1) {
+            return String.fromCharCode(중 + 0x314f);
+        }
         return String.fromCharCode(44032 + 초 * 588 + 중 * 28 + 종 + 1);
     }
 
