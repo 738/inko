@@ -51,12 +51,14 @@ describe('inko', () => {
         assert.equal(inko.en2ko('dUDn'), '여우');
         assert.equal(inko.en2ko('rrrr'), 'ㄱㄱㄱㄱ');
         assert.equal(inko.en2ko('hhhh'), 'ㅗㅗㅗㅗ');
+        assert.equal(inko.en2ko('r s e f a q t d w c z x v g'), 'ㄱ ㄴ ㄷ ㄹ ㅁ ㅂ ㅅ ㅇ ㅈ ㅊ ㅋ ㅌ ㅍ ㅎ');
         assert.equal(inko.en2ko('rtrt'), 'ㄳㄳ');
         assert.equal(inko.en2ko('hlhl'), 'ㅚㅚ');
         assert.equal(inko.en2ko('QlEkrgkrp'), '삐딱하게');
         assert.equal(inko.en2ko('ekfkawnl gjs cptqkznldp xkrhvk'),'다람쥐 헌 쳇바퀴에 타고파');
         assert.equal(inko.en2ko('EKFKAWNL GJS CPTQKZNLDP XKRHVK'), '따람쮜 헌 촀빠퀴예 타꼬파');
     });
+
 
     it('한타 -> 영어', () => {
         assert.equal(inko.ko2en('ㅗ디ㅣㅐ'), 'hello');

@@ -50,6 +50,10 @@
         'ㅡㅣ': 'ㅢ'
     };
 
+    var isVowel = function (e) {
+        return 한글index[e] >= 첫모음;
+    };
+
     // constructor
     function Inko() {
         return this;
@@ -244,32 +248,26 @@
         var combine = function (arr) {
             var group = [];
             arr.forEach(function (cur, i) {
-                if (i === 0 ||
-                    (한글index[last(group)[0]] < 첫모음 !== cur < 첫모음)) {
-                    group.push([한글[cur]]);
-                } else {
-                    last(group).push(한글[cur]);
+                var h = 한글[cur];
+                if (i === 0 || isVowel(last(group)[0]) !== isVowel(h)) {
+                    group.push([]);
                 }
+                last(group).push(h);
             });
+
+            group = group.map(function connect(e) {
+                var w = e.join('');
+                return connectableConsonant[w] || connectableVowel[w] || w;
+            });
+
+            if (group.length === 1) return group[0]; 
 
             var charSet = [초성, 중성, 종성];
-            var code = [-1, -1, -1];
-
-            group.map(function (arr) {
-                return arr.join('')
-            }).forEach(function (w) {
-                for (var i = 0; i < 3; ++i) {
-                    if (code[i] !== -1) continue;
-                    var idx = charSet[i].indexOf(
-                        connectableConsonant[w] ||
-                        connectableVowel[w] ||
-                        w);
-                    if (idx !== -1) {
-                        code[i] = idx;
-                        break;
-                    }
-                }
+            var code = group.map(function (w, i) {
+                return charSet[i].indexOf(w);
             });
+
+            if (code.length < 3) code.push(-1);
 
             return self.한글생성.apply(this, code);
         };
@@ -296,8 +294,8 @@
                 } else {
                     var transition = (function () {
                         var c = (한글[last] || '') + 한글[cur];
-                        var lastIsVowel = last >= 첫모음;
-                        var curIsVowel = cur >= 첫모음;
+                        var lastIsVowel = isVowel(한글[last]);
+                        var curIsVowel = isVowel(한글[cur]);
                         if (!curIsVowel) {
                             if (lastIsVowel) {
                                 return [4 /* ㄸ */, 8 /* ㅃ */, 13 /* ㅉ */]
@@ -351,13 +349,6 @@
 
     // 초성, 중성, 종성의 charCode를 받아서 합친 한글의 charCode를 반환함
     Inko.prototype.한글생성 = function (초, 중, 종) {
-        if (초 === -1 && 중 === -1) {
-            return String.fromCharCode(종 + 0x3131);
-        } else if (초 !== -1 && 중 === -1) {
-            return String.fromCharCode(초 + 0x3131);
-        } else if (초 === -1 && 중 !== -1) {
-            return String.fromCharCode(중 + 0x314f);
-        }
         return String.fromCharCode(44032 + 초 * 588 + 중 * 28 + 종 + 1);
     }
 
