@@ -57,8 +57,8 @@ describe('inko', () => {
         assert.equal(inko.en2ko('QlEkrgkrp'), '삐딱하게');
         assert.equal(inko.en2ko('ekfkawnl gjs cptqkznldp xkrhvk'),'다람쥐 헌 쳇바퀴에 타고파');
         assert.equal(inko.en2ko('EKFKAWNL GJS CPTQKZNLDP XKRHVK'), '따람쮜 헌 촀빠퀴예 타꼬파');
+        // assert.equal(inko.en2ko('rtk'), 'ㄱ사');
     });
-
 
     it('한타 -> 영어', () => {
         assert.equal(inko.ko2en('ㅗ디ㅣㅐ'), 'hello');

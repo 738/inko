@@ -61,7 +61,104 @@
 
     Inko.prototype.VERSION = '1.0.5';
 
-    Inko.prototype.en2ko = function (input) {
+    Inko.prototype.en2ko = function (eng) {
+        var self = this;
+        var stateLength = [0, 1, 1, 2, 2, 2, 3, 3, 4, 4, 5];
+        var transitions = [
+            [1, 1, 2, 2], // 0, EMPTY
+            [3, 1, 4, 4], // 1, 자
+            [1, 1, 5, 2], // 2, 모
+            [3, 1, 7, 7], // 3, 자자
+            [6, 1, 7, 2], // 4, 자모
+            [1, 1, 2, 2], // 5, 모모
+            [9, 1, 4, 4], // 6, 자모자
+            [9, 1, 2, 2], // 7, 자모모
+            [1, 1, 4, 4], // 8, 자모자자 
+            [10, 1, 4, 4],// 9, 자모모자
+            [1, 1, 4, 4], // 10, 자모모자자
+        ];
+
+        var last = function (list) {
+            return list[list.length - 1];
+        };
+
+        var combine = function (arr) {
+            var group = [];
+            arr.forEach(function (cur, i) {
+                var h = 한글[cur];
+                if (i === 0 || isVowel(last(group)[0]) !== isVowel(h)) {
+                    group.push([]);
+                }
+                last(group).push(h);
+            });
+
+            group = group.map(function connect(e) {
+                var w = e.join('');
+                return connectableConsonant[w] || connectableVowel[w] || w;
+            });
+
+            if (group.length === 1) return group[0]; 
+
+            var charSet = [초성, 중성, 종성];
+            var code = group.map(function (w, i) {
+                return charSet[i].indexOf(w);
+            });
+
+            if (code.length < 3) code.push(-1);
+
+            return self.한글생성.apply(this, code);
+        };
+
+        return (function () {
+            var length = eng.length;
+            var last = -1;
+            var result = [];
+            var state = 0;
+            var tmp = [];
+
+            var flush = function () {
+                if (tmp.length > 0) result.push(combine(tmp));
+                tmp = [];
+            };
+
+            for (var i = 0; i < length; ++i) {
+                var chr = eng[i];
+                var cur = 영어index[chr];
+                if (typeof cur === 'undefined') {
+                    state = 0;
+                    flush();
+                    result.push(chr);
+                } else {
+                    var transition = (function () {
+                        var c = (한글[last] || '') + 한글[cur];
+                        var lastIsVowel = isVowel(한글[last]);
+                        var curIsVowel = isVowel(한글[cur]);
+                        if (!curIsVowel) {
+                            if (lastIsVowel) {
+                                return [4 /* ㄸ */, 8 /* ㅃ */, 13 /* ㅉ */]
+                                    .indexOf(cur) === -1 ? 0 : 1
+                            }
+                            return connectableConsonant[c] ? 0 : 1
+                        } else if (curIsVowel) {
+                            return connectableVowel[c] ? 2 : 3
+                        }
+                        return 2;
+                    }());
+                    var nxtState = transitions[state][transition];
+                    tmp.push(cur);
+                    var diff = tmp.length - stateLength[nxtState];
+                    if (diff) result.push(combine(tmp.splice(0, diff)));
+                    state = nxtState;
+                    last = cur;
+                }
+            }
+            flush();
+            return result.join('');
+        }());
+    };
+
+    // deprecated
+    Inko.prototype.en2kr = function (input) {
         var result = '';
         if (input === '' || input === undefined) return result;
         var _초성 = -1, _중성 = -1, _종성 = -1;
@@ -223,102 +320,6 @@
         }
         return result;
     }
-
-    Inko.prototype.en2kr = function (eng) {
-        var self = this;
-        var stateLength = [0, 1, 1, 2, 2, 2, 3, 3, 4, 4, 5];
-        var transitions = [
-            [1, 1, 2, 2], // 0, EMPTY
-            [3, 1, 4, 4], // 1, 자
-            [1, 1, 5, 2], // 2, 모
-            [3, 1, 7, 7], // 3, 자자
-            [6, 1, 7, 2], // 4, 자모
-            [1, 1, 2, 2], // 5, 모모
-            [9, 1, 4, 4], // 6, 자모자
-            [9, 1, 2, 2], // 7, 자모모
-            [1, 1, 4, 4], // 8, 자모자자 
-            [10, 1, 4, 4],// 9, 자모모자
-            [1, 1, 4, 4], // 10, 자모모자자
-        ];
-
-        var last = function (list) {
-            return list[list.length - 1];
-        };
-
-        var combine = function (arr) {
-            var group = [];
-            arr.forEach(function (cur, i) {
-                var h = 한글[cur];
-                if (i === 0 || isVowel(last(group)[0]) !== isVowel(h)) {
-                    group.push([]);
-                }
-                last(group).push(h);
-            });
-
-            group = group.map(function connect(e) {
-                var w = e.join('');
-                return connectableConsonant[w] || connectableVowel[w] || w;
-            });
-
-            if (group.length === 1) return group[0]; 
-
-            var charSet = [초성, 중성, 종성];
-            var code = group.map(function (w, i) {
-                return charSet[i].indexOf(w);
-            });
-
-            if (code.length < 3) code.push(-1);
-
-            return self.한글생성.apply(this, code);
-        };
-
-        return (function () {
-            var length = eng.length;
-            var last = -1;
-            var result = [];
-            var state = 0;
-            var tmp = [];
-
-            var flush = function () {
-                if (tmp.length > 0) result.push(combine(tmp));
-                tmp = [];
-            };
-
-            for (var i = 0; i < length; ++i) {
-                var chr = eng[i];
-                var cur = 영어index[chr];
-                if (typeof cur === 'undefined') {
-                    state = 0;
-                    flush();
-                    result.push(chr);
-                } else {
-                    var transition = (function () {
-                        var c = (한글[last] || '') + 한글[cur];
-                        var lastIsVowel = isVowel(한글[last]);
-                        var curIsVowel = isVowel(한글[cur]);
-                        if (!curIsVowel) {
-                            if (lastIsVowel) {
-                                return [4 /* ㄸ */, 8 /* ㅃ */, 13 /* ㅉ */]
-                                    .indexOf(cur) === -1 ? 0 : 1
-                            }
-                            return connectableConsonant[c] ? 0 : 1
-                        } else if (curIsVowel) {
-                            return connectableVowel[c] ? 2 : 3
-                        }
-                        return 2;
-                    }());
-                    var nxtState = transitions[state][transition];
-                    tmp.push(cur);
-                    var diff = tmp.length - stateLength[nxtState];
-                    if (diff) result.push(combine(tmp.splice(0, diff)));
-                    state = nxtState;
-                    last = cur;
-                }
-            }
-            flush();
-            return result.join('');
-        }());
-    };
 
     Inko.prototype.ko2en = function (input) {
         var result = '';
