@@ -68,7 +68,7 @@
             [1, 1, 2, 2], // 0, EMPTY
             [3, 1, 4, 4], // 1, 자
             [1, 1, 5, 2], // 2, 모
-            [3, 1, 7, 7], // 3, 자자
+            [3, 1, 4, -1], // 3, 자자
             [6, 1, 7, 2], // 4, 자모
             [1, 1, 2, 2], // 5, 모모
             [9, 1, 4, 4], // 6, 자모자
@@ -139,7 +139,7 @@
                                     .indexOf(cur) === -1 ? 0 : 1
                             }
                             return connectableConsonant[c] ? 0 : 1
-                        } else if (curIsVowel) {
+                        } else if (lastIsVowel) {
                             return connectableVowel[c] ? 2 : 3
                         }
                         return 2;
