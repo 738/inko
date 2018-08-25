@@ -35,7 +35,7 @@
 | v1.0.5  | 2018.08.11   | inko.js에서 `package.json` 파일을 import하는 부분 제거 | [JonJee](https://github.com/JonJee) |
 | v1.0.6  | 2018.08.25   | [#12](https://github.com/JonJee/inko/issues/12) hlhlhl -> ㅚㅗㅣㅗㅣ로 변환되는 버그 수정, [#14](https://github.com/JonJee/inko/issues/14) rtk -> ꦵ로 변환되는 버그 수정, [#15](https://github.com/JonJee/inko/issues/15) 복자음 가능 여부 옵션화 | [algoshipda](https://github.com/algoshipda), [JonJee](https://github.com/JonJee) |
 
-## Dependent tools
+## Command Line Interface
 - [Inko CLI](https://github.com/JonJee/inko-cli) - Use Inko on the command line.
 
 ## Installation
@@ -65,21 +65,46 @@ bower install inko
 ```
 
 ## Usage
-```
+```js
 var Inko = require('inko');
 var inko = Inko();
 ```
 
 ### 영어 → 한글
-```
+```js
 inko.en2ko('dkssudgktpdy tptkd!');
 // 안녕하세요 세상!
 ```
 
 ### 한글 → 영어
-```
+```js
 inko.ko2en('ㅗ디ㅣㅐ 재깅!');
 // hello world!
+```
+
+### 복자음 가능 여부 설정
+```js
+// allowDoubleConsonant의 기본값은 false입니다
+var option = {
+  allowDoubleConsonant: true
+}
+```
+
+#### 설정을 부여하는 방법은 아래의 세 가지 방법으로 지원합니다.
+1. 인스턴스 생성할 때 생성자의 인자로 설정 부여
+```js
+var inko = Inko(option);
+```
+
+2. `config` 함수로 설정 부여
+```js
+inko.config(option);
+```
+
+3. `en2ko` 함수의 인자로 설정 부여
+```js
+inko.en2ko('rtrt', option);
+// output: ㄳㄳ
 ```
 
 ## Contributors
