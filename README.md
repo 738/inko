@@ -33,7 +33,7 @@
 | v1.0.3  | 2018.08.07   | [#7](https://github.com/JonJee/inko/issues/7) 영타 -> 한글로 변환 시켜주는 로직 수정. 알파벳 소문자 26개, 대문자 26개 총 52개에 맞춰서 한글과 매핑함.| [JonJee](https://github.com/JonJee)|
 | v1.0.4  | 2018.08.11   | [#4](https://github.com/JonJee/inko/issues/4) Gulp로 workflow 자동화 (inko.min.js 파일 생성), [#8](https://github.com/JonJee/inko/issues/8) Bower에 라이브러리 등록 | [JonJee](https://github.com/JonJee) |
 | v1.0.5  | 2018.08.11   | inko.js에서 `package.json` 파일을 import하는 부분 제거 | [JonJee](https://github.com/JonJee) |
-| v1.0.6  | 2018.08.25   | [#12](https://github.com/JonJee/inko/issues/12) hlhlhl -> ㅚㅗㅣㅗㅣ로 변환되는 버그 수정, [#14](https://github.com/JonJee/inko/issues/14) rtk -> ꦵ로 변환되는 버그 수정, [#15](https://github.com/JonJee/inko/issues/15) 복자음 가능 여부 옵션화 | [algoshipda](https://github.com/algoshipda), [JonJee](https://github.com/JonJee) |
+| v1.0.6  | 2018.08.25   | [#12](https://github.com/JonJee/inko/issues/12) hlhlhl -> ㅚㅗㅣㅗㅣ로 변환되는 버그 수정, [#14](https://github.com/JonJee/inko/issues/14) rtk -> ꦵ로 변환되는 버그 수정, [#15](https://github.com/JonJee/inko/issues/15) 복자음 가능 여부 옵션화, `config` 함수 추가 | [algoshipda](https://github.com/algoshipda), [JonJee](https://github.com/JonJee) |
 
 ## Command Line Interface
 - [Inko CLI](https://github.com/JonJee/inko-cli) - Use Inko on the command line.
