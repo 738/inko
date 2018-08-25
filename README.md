@@ -109,6 +109,8 @@ inko.config(option);
 ```js
 inko.en2ko('rtrt', option);
 // output: ㄳㄳ
+inko.en2ko('rtrt', { allowDoubleConsonant: false });
+// output: ㄱㅅㄱㅅ
 ```
 
 ## Contributors
