@@ -67,7 +67,11 @@ bower install inko
 ## Usage
 ```js
 var Inko = require('inko');
-var inko = Inko();
+var inko = new Inko();
+
+// ES6
+import Inko from 'inko';
+let inko = new Inko();
 ```
 
 ### 영어 → 한글
