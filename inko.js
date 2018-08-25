@@ -62,6 +62,12 @@
         return this;
     }
 
+    Inko.prototype.config = function(_option) {
+        var option = _option || {};
+        this._allowDoubleConsonant = typeof option.allowDoubleConsonant !== 'undefined' ?
+            option.allowDoubleConsonant : false;
+    }
+
     Inko.prototype.VERSION = '1.0.5';
 
     Inko.prototype.en2ko = function (eng, _option) {
