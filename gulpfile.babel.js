@@ -7,6 +7,9 @@ import mocha from 'gulp-mocha';
 import rename from 'gulp-rename';
 import sourcemaps from 'gulp-sourcemaps';
 import pump from 'pump';
+import ts from 'gulp-typescript';
+
+let tsProject = ts.createProject("tsconfig.json");
 
 gulp.task('test', () =>
     gulp.src('test/**/*.js')
@@ -27,4 +30,10 @@ gulp.task('build', (cb) => {
 
 gulp.task('default', ['watch', 'test'], () => {
     gutil.log('Gulp is running...');
+});
+
+gulp.task("default", function () {
+    return tsProject.src()
+        .pipe(tsProject())
+        .js.pipe(gulp.dest("dist"));
 });
