@@ -114,8 +114,8 @@ inko.en2ko('rtrt', { allowDoubleConsonant: false });
 ```
 
 ## Contributors
-| [<img src="https://avatars0.githubusercontent.com/u/36702053?s=200&v=4" width="50px" align="center"/><br /><sub><b>Jon Jee</b></sub>](https://github.com/JonJee) | [<img src="https://avatars2.githubusercontent.com/u/12122155?s=200&v=4" width="50px" align="center"/><br /><sub><b>algoshipda</b></sub>](https://github.com/algoshipda) | [<img src="https://avatars1.githubusercontent.com/u/29385395?s=200&v=4" width="50px" align="center"/><br /><sub><b>hyoungsp</b></sub>](https://github.com/hyoungsp) | [<img src="https://avatars1.githubusercontent.com/u/39438507?s=50&v=4" width="50px" align="center"/><br /><sub><b>joonghyeob-shin</b></sub>](https://github.com/joonghyeob-shin) |
-|--|--|--|--|
+| [<img src="https://avatars0.githubusercontent.com/u/36702053?s=200&v=4" width="50px" align="center"/><br /><sub><b>Jon Jee</b></sub>](https://github.com/JonJee) | [<img src="https://avatars2.githubusercontent.com/u/12122155?s=200&v=4" width="50px" align="center"/><br /><sub><b>algoshipda</b></sub>](https://github.com/algoshipda) | [<img src="https://avatars3.githubusercontent.com/u/24207964?s=200&v=4" width="50px" align="center"/><br /><sub><b>ahnsv</b></sub>](https://github.com/ahnsv) | [<img src="https://avatars1.githubusercontent.com/u/29385395?s=200&v=4" width="50px" align="center"/><br /><sub><b>hyoungsp</b></sub>](https://github.com/hyoungsp) | [<img src="https://avatars1.githubusercontent.com/u/39438507?s=50&v=4" width="50px" align="center"/><br /><sub><b>joonghyeob-shin</b></sub>](https://github.com/joonghyeob-shin) |
+|--|--|--|--|--|
 
 ## Contributing
 이 오픈소스 프로젝트에 누구나 기여할 수 있습니다. 기여하고 싶은 분들은 이 레포지토리를 포크한 후 풀리퀘스트 요청해주세요!
