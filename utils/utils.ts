@@ -1,9 +1,9 @@
-import { charIndexSignature, charKeyValuePair } from './interfaces'
+import { CharIndexSignature, CharKeyValuePair } from './interfaces'
 import * as constants from './constants';
 
 // 한글, 영어 index 통합
 export function index(input: string): number {
-    let keyValuePair: charIndexSignature = {};
+    let keyValuePair: CharIndexSignature = {};
     input.split('').forEach((item, index) => { keyValuePair[item] = index })
     return keyValuePair[input];
 }

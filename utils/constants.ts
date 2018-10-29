@@ -1,4 +1,4 @@
-import { charKeyValuePair } from "./interfaces";
+import { CharKeyValuePair } from "./interfaces";
 export const engSyllabi =
   "rRseEfaqQtTdwWczxvgASDFGZXCVkoiOjpuPhynbmlYUIHJKLBNM"; // 33 + 19개
 export const korSyllabi =
@@ -26,7 +26,7 @@ export const TRANSITIONS = [
   [10, 1, 4, 4], // 9, 자모모자
   [1, 1, 4, 4] // 10, 자모모자자
 ];
-export const CONNECTABLE_CONSONANT: charKeyValuePair = {
+export const CONNECTABLE_CONSONANT: CharKeyValuePair = {
   ㄱㅅ: "ㄳ",
   ㄴㅈ: "ㄵ",
   ㄴㅎ: "ㄶ",
@@ -40,7 +40,7 @@ export const CONNECTABLE_CONSONANT: charKeyValuePair = {
   ㅂㅅ: "ㅄ"
 };
 
-export const CONNECTABLE_VOWEL: charKeyValuePair = {
+export const CONNECTABLE_VOWEL: CharKeyValuePair = {
   ㅗㅏ: "ㅘ",
   ㅗㅐ: "ㅙ",
   ㅗㅣ: "ㅚ",

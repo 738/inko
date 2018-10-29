@@ -1,8 +1,8 @@
 
-export interface charIndexSignature {
+export interface CharIndexSignature {
     [key: string]: number
 }
 
-export interface charKeyValuePair {
+export interface CharKeyValuePair {
     [key: string]: string
 }
