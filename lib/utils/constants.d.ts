@@ -1,0 +1,15 @@
+import { CharKeyValuePair } from "./interfaces";
+export declare const engSyllabi = "rRseEfaqQtTdwWczxvgASDFGZXCVkoiOjpuPhynbmlYUIHJKLBNM";
+export declare const korSyllabi = "\u3131\u3132\u3134\u3137\u3138\u3139\u3141\u3142\u3143\u3145\u3146\u3147\u3148\u3149\u314A\u314B\u314C\u314D\u314E\u3141\u3134\u3147\u3139\u314E\u314B\u314C\u314A\u314D\u314F\u3150\u3151\u3152\u3153\u3154\u3155\u3156\u3157\u315B\u315C\u3160\u3161\u3163\u315B\u3155\u3151\u3157\u3153\u314F\u3163\u3160\u315C\u3161";
+export declare const choSung = "\u3131\u3132\u3134\u3137\u3138\u3139\u3141\u3142\u3143\u3145\u3146\u3147\u3148\u3149\u314A\u314B\u314C\u314D\u314E";
+export declare const jungSung = "\u314F\u3150\u3151\u3152\u3153\u3154\u3155\u3156\u3157\u3158\u3159\u315A\u315B\u315C\u315D\u315E\u315F\u3160\u3161\u3162\u3163";
+export declare const jongSung = "\u3131\u3132\u3133\u3134\u3135\u3136\u3137\u3139\u313A\u313B\u313C\u313D\u313E\u313F\u3140\u3141\u3142\u3144\u3145\u3146\u3147\u3148\u314A\u314B\u314C\u314D\u314E";
+export declare const firstVowelCharCode = 28;
+export declare const firstKorComb = 44032;
+export declare const lastKorComb = 55203;
+export declare const firstElement = 12593;
+export declare const lastElement = 12643;
+export declare const STATELENGTHS: number[];
+export declare const TRANSITIONS: number[][];
+export declare const CONNECTABLE_CONSONANT: CharKeyValuePair;
+export declare const CONNECTABLE_VOWEL: CharKeyValuePair;
