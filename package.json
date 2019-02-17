@@ -6,12 +6,24 @@
     "url": "https://github.com/jonjee/inko/issues",
     "email": "jydrogen@gmail.com"
   },
-  "main": "inko.js",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "directories": {
     "test": "test"
   },
+  "files": [
+    "lib/**/*"
+  ],
   "scripts": {
-    "test": "mocha"
+    "build": "tsc",
+    "test": "mocha",
+    "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
+    "lint": "tslint -p tsconfig.json",
+    "prepare": "npm run build",
+    "prepublishOnly": "npm test && npm run lint",
+    "preversion": "npm run lint",
+    "version": "npm run format && git add -A src",
+    "postversion": "git push && git push --tags"
   },
   "keywords": [
     "inko",
@@ -35,7 +47,7 @@
     "type": "git",
     "url": "git@github.com:JonJee/inko.git"
   },
-  "author": "Jon Jee",
+  "author": "Jon Jee <jydrogen@gmail.com> (https://blog.holy.kiwi)",
   "license": "MIT",
   "homepage": "https://inko.holy.kiwi",
   "dependencies": {
@@ -52,7 +64,10 @@
     "gulp-typescript": "^5.0.0-alpha.3",
     "gulp-uglify-es": "^1.0.4",
     "gulp-util": "^3.0.8",
+    "prettier": "^1.16.4",
     "pump": "^3.0.0",
+    "tslint": "^5.12.1",
+    "tslint-config-prettier": "^1.18.0",
     "typescript": "^3.1.2"
   }
 }
