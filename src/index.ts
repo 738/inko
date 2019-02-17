@@ -7,6 +7,7 @@ import {
     lastKorComb,
     choSung,
     korSyllabi,
+    engSyllabi,
     firstElement,
     lastElement,
     CONNECTABLE_CONSONANT,
@@ -138,8 +139,32 @@ export class Inko {
             return result.join('');
         }());
     }
-    ko2en(kor: string, option?: Option): string {
-        return "";
+
+    ko2en(kor: string): string {
+        var result = '';
+        if (kor === '' || kor === undefined) return result;
+        var seperated = [-1, -1, -1, -1, -1];
+
+        for (var i = 0; i < kor.length; i++) {
+            var _korCharacter = kor[i];
+            var _code = _korCharacter.charCodeAt(0);
+            // 가 ~ 힣 사이에 있는 한글이라면
+            if ((_code >= '가'.charCodeAt(0) && _code <= '힣'.charCodeAt(0)) || (_code >= 'ㄱ'.charCodeAt(0) && _code <= 'ㅣ'.charCodeAt(0))) {
+                seperated = this.koSeparate(_korCharacter);
+            }
+            // 한글이 아니라면
+            else {
+                result += _korCharacter;
+                // 분리 배열 초기화
+                seperated = [-1, -1, -1, -1, -1];
+            }
+
+            for (var j = 0; j < seperated.length; j++) {
+                if (seperated[j] !== -1)
+                    result += engSyllabi[seperated[j]];
+            }
+        }
+        return result;
     }
     // need to work on cuz theres no character in typescript
     //   한글생성 -> koGenerate
