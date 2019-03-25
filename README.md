@@ -26,6 +26,7 @@
 # Getting Started
 - 영타를 한글로 쳤을 때, 혹은 한타를 영어로 변환해주는 기능을 가진 자바스크립트 오픈소스 라이브러리입니다.
 - [Inko Offical Website](https://inko.holy.kiwi) has been launched!
+- [Inko 한영타변환기 크롬 확장프로그램](https://chrome.google.com/webstore/detail/inko-%ED%95%9C%EC%98%81%ED%83%80%EB%B3%80%ED%99%98%EA%B8%B0/bijdbcchfaolmleinaghdbnemmdabbmn?hl=ko) has been launched! (19.03.25)
 
 ## Release Note
 | Version | Release Date | Changes | Contributors |
