@@ -36,9 +36,6 @@
 | v1.0.5  | 2018.08.11   | inko.js에서 `package.json` 파일을 import하는 부분 제거 | [738](https://github.com/738) |
 | v1.0.6  | 2018.08.25   | [#12](https://github.com/738/inko/issues/12) hlhlhl -> ㅚㅗㅣㅗㅣ로 변환되는 버그 수정, [#14](https://github.com/738/inko/issues/14) rtk -> ꦵ로 변환되는 버그 수정, [#15](https://github.com/738/inko/issues/15) 복자음 가능 여부 옵션화, `config` 함수 추가 | [algoshipda](https://github.com/algoshipda), [738](https://github.com/738) |
 
-## Command Line Interface
-- [Inko CLI](https://github.com/738/inko-cli) - Use Inko on the command line.
-
 ## Installation
 
 ### npm
@@ -113,6 +110,12 @@ inko.en2ko('rtrt', option);
 inko.en2ko('rtrt', { allowDoubleConsonant: false });
 // output: ㄱㅅㄱㅅ
 ```
+
+## Related
+* [inko-cli](https://github.com/738/inko-cli) - Use inko on the command line
+* [inko-web](https://github.com/738/inko-web) - Inko official website
+* [inko-chrome-extension](https://github.com/738/inko-chrome-extension) - Inko chrome extension
+* [alfred-inko](https://github.com/738/alfred-inko) - Alfred 3 workflow to convert misspelled English characters into Korean letters (& vice versa)
 
 ## Contributors
 | [<img src="https://avatars0.githubusercontent.com/u/36702053?s=200&v=4" width="50px" align="center"/><br /><sub><b>738 (Jon Jee)</b></sub>](https://github.com/738) | [<img src="https://avatars2.githubusercontent.com/u/12122155?s=200&v=4" width="50px" align="center"/><br /><sub><b>algoshipda</b></sub>](https://github.com/algoshipda) | [<img src="https://avatars3.githubusercontent.com/u/24207964?s=200&v=4" width="50px" align="center"/><br /><sub><b>ahnsv</b></sub>](https://github.com/ahnsv) | [<img src="https://avatars1.githubusercontent.com/u/29385395?s=200&v=4" width="50px" align="center"/><br /><sub><b>hyoungsp</b></sub>](https://github.com/hyoungsp) | [<img src="https://avatars1.githubusercontent.com/u/39438507?s=50&v=4" width="50px" align="center"/><br /><sub><b>joonghyeob-shin</b></sub>](https://github.com/joonghyeob-shin) |
