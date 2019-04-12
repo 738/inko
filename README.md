@@ -1,19 +1,19 @@
 <h1 align="center">
-    <img height="250" src="https://github.com/JonJee/inko/blob/master/images/inko_logo.png?raw=true" />
+    <img height="250" src="https://github.com/738/inko/blob/master/images/inko_logo.png?raw=true" />
     <br> Inko.js
 </h1>
 
 <p align="center">
   <img src="https://img.shields.io/teamcity/codebetter/bt428.svg" />
-  <img src="https://img.shields.io/github/stars/jonjee/inko.svg?style=social&label=Stars" />
+  <img src="https://img.shields.io/github/stars/738/inko.svg?style=social&label=Stars" />
   <a href="https://npmjs.com/package/inko">
     <img src="https://img.shields.io/npm/v/inko.svg" alt="version" />
   </a>
   <a href="https://www.jsdelivr.com/package/npm/inko">
     <img src="https://data.jsdelivr.com/v1/package/npm/inko/badge" />
   </a>
-  <a href="https://github.com/jonjee/inko/blob/master/LICENSE">
-    <img src="https://img.shields.io/github/license/jonjee/inko.svg" />
+  <a href="https://github.com/738/inko/blob/master/LICENSE">
+    <img src="https://img.shields.io/github/license/738/inko.svg" />
   </a>
 </p>
 
@@ -31,13 +31,13 @@
 ## Release Note
 | Version | Release Date | Changes | Contributors |
 |--------|--------------|---------|-------------|
-| v1.0.3  | 2018.08.07   | [#7](https://github.com/JonJee/inko/issues/7) 영타 -> 한글로 변환 시켜주는 로직 수정. 알파벳 소문자 26개, 대문자 26개 총 52개에 맞춰서 한글과 매핑함.| [JonJee](https://github.com/JonJee)|
-| v1.0.4  | 2018.08.11   | [#4](https://github.com/JonJee/inko/issues/4) Gulp로 workflow 자동화 (inko.min.js 파일 생성), [#8](https://github.com/JonJee/inko/issues/8) Bower에 라이브러리 등록 | [JonJee](https://github.com/JonJee) |
-| v1.0.5  | 2018.08.11   | inko.js에서 `package.json` 파일을 import하는 부분 제거 | [JonJee](https://github.com/JonJee) |
-| v1.0.6  | 2018.08.25   | [#12](https://github.com/JonJee/inko/issues/12) hlhlhl -> ㅚㅗㅣㅗㅣ로 변환되는 버그 수정, [#14](https://github.com/JonJee/inko/issues/14) rtk -> ꦵ로 변환되는 버그 수정, [#15](https://github.com/JonJee/inko/issues/15) 복자음 가능 여부 옵션화, `config` 함수 추가 | [algoshipda](https://github.com/algoshipda), [JonJee](https://github.com/JonJee) |
+| v1.0.3  | 2018.08.07   | [#7](https://github.com/738/inko/issues/7) 영타 -> 한글로 변환 시켜주는 로직 수정. 알파벳 소문자 26개, 대문자 26개 총 52개에 맞춰서 한글과 매핑함.| [738](https://github.com/738)|
+| v1.0.4  | 2018.08.11   | [#4](https://github.com/738/inko/issues/4) Gulp로 workflow 자동화 (inko.min.js 파일 생성), [#8](https://github.com/738/inko/issues/8) Bower에 라이브러리 등록 | [738](https://github.com/738) |
+| v1.0.5  | 2018.08.11   | inko.js에서 `package.json` 파일을 import하는 부분 제거 | [738](https://github.com/738) |
+| v1.0.6  | 2018.08.25   | [#12](https://github.com/738/inko/issues/12) hlhlhl -> ㅚㅗㅣㅗㅣ로 변환되는 버그 수정, [#14](https://github.com/738/inko/issues/14) rtk -> ꦵ로 변환되는 버그 수정, [#15](https://github.com/738/inko/issues/15) 복자음 가능 여부 옵션화, `config` 함수 추가 | [algoshipda](https://github.com/algoshipda), [738](https://github.com/738) |
 
 ## Command Line Interface
-- [Inko CLI](https://github.com/JonJee/inko-cli) - Use Inko on the command line.
+- [Inko CLI](https://github.com/738/inko-cli) - Use Inko on the command line.
 
 ## Installation
 
@@ -115,11 +115,11 @@ inko.en2ko('rtrt', { allowDoubleConsonant: false });
 ```
 
 ## Contributors
-| [<img src="https://avatars0.githubusercontent.com/u/36702053?s=200&v=4" width="50px" align="center"/><br /><sub><b>Jon Jee</b></sub>](https://github.com/738) | [<img src="https://avatars2.githubusercontent.com/u/12122155?s=200&v=4" width="50px" align="center"/><br /><sub><b>algoshipda</b></sub>](https://github.com/algoshipda) | [<img src="https://avatars3.githubusercontent.com/u/24207964?s=200&v=4" width="50px" align="center"/><br /><sub><b>ahnsv</b></sub>](https://github.com/ahnsv) | [<img src="https://avatars1.githubusercontent.com/u/29385395?s=200&v=4" width="50px" align="center"/><br /><sub><b>hyoungsp</b></sub>](https://github.com/hyoungsp) | [<img src="https://avatars1.githubusercontent.com/u/39438507?s=50&v=4" width="50px" align="center"/><br /><sub><b>joonghyeob-shin</b></sub>](https://github.com/joonghyeob-shin) |
+| [<img src="https://avatars0.githubusercontent.com/u/36702053?s=200&v=4" width="50px" align="center"/><br /><sub><b>738 (Jon Jee)</b></sub>](https://github.com/738) | [<img src="https://avatars2.githubusercontent.com/u/12122155?s=200&v=4" width="50px" align="center"/><br /><sub><b>algoshipda</b></sub>](https://github.com/algoshipda) | [<img src="https://avatars3.githubusercontent.com/u/24207964?s=200&v=4" width="50px" align="center"/><br /><sub><b>ahnsv</b></sub>](https://github.com/ahnsv) | [<img src="https://avatars1.githubusercontent.com/u/29385395?s=200&v=4" width="50px" align="center"/><br /><sub><b>hyoungsp</b></sub>](https://github.com/hyoungsp) | [<img src="https://avatars1.githubusercontent.com/u/39438507?s=50&v=4" width="50px" align="center"/><br /><sub><b>joonghyeob-shin</b></sub>](https://github.com/joonghyeob-shin) |
 |--|--|--|--|--|
 
 ## Contributing
 이 오픈소스 프로젝트에 누구나 기여할 수 있습니다. 기여하고 싶은 분들은 이 레포지토리를 포크한 후 풀리퀘스트 요청해주세요!
 
 ## License
-Inko.js is released under the MIT License. See [LICENSE](https://github.com/jonjee/inko/blob/master/LICENSE) file for details.
+Inko.js is released under the MIT License. See [LICENSE](https://github.com/738/inko/blob/master/LICENSE) file for details.
