@@ -1,9 +1,8 @@
 version: 2
 jobs:
   build:
-    working_directory: ~/mern-starter
-    docker:
-      - image: "circleci/node:9.6.1"
+    working_directory: ~/inko
+    machine: true
     steps:
       - checkout
       - run:
