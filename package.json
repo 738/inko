@@ -1,9 +1,9 @@
 {
   "name": "inko",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "영타를 한글로 쳤을 때, 혹은 한타를 영어로 변환해주는 기능을 가진 자바스크립트 오픈소스 라이브러리입니다.",
   "bugs": {
-    "url": "https://github.com/jonjee/inko/issues",
+    "url": "https://github.com/738/inko/issues",
     "email": "jydrogen@gmail.com"
   },
   "main": "inko.js",
@@ -33,7 +33,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:JonJee/inko.git"
+    "url": "git@github.com:738/inko.git"
   },
   "author": "Jon Jee",
   "license": "MIT",

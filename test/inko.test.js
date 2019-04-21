@@ -5,7 +5,7 @@ var inko = new Inko();
 describe('inko', () => {
     console.log(`The version of inkojs is ${inko.VERSION}`);
     it('is한글', () => {
-        const 한글배열 = ['ㄱ', 'ㄴ', 'ㅇ', 'ㅎ', 'ㅍ', 'ㅋ', '기', '긹', '닙', 'ㅜ', 'ㅢ', '뷁', '챀', '팥'];
+        const 한글배열 = ['ㄱ', 'ㄴ', 'ㅇ', 'ㅎ', 'ㅍ', 'ㅋ', '기', '긹', '닙', 'ㅜ', 'ㅢ', '뷁', '챀', '팥', '가', '긯'];
         const 다른배열 = ['s', '1', 'D', '#', 'R', 'B', 'C', '9', 'a', ';', '=', '6', '3', 'P'];
         한글배열.forEach(value => {
             assert.equal(inko.is한글(value), true, `is한글(${value})에 잘못된 값이 나왔습니다.`);

@@ -35,6 +35,7 @@
 | v1.0.4  | 2018.08.11   | [#4](https://github.com/738/inko/issues/4) Gulp로 workflow 자동화 (inko.min.js 파일 생성), [#8](https://github.com/738/inko/issues/8) Bower에 라이브러리 등록 | [738](https://github.com/738) |
 | v1.0.5  | 2018.08.11   | inko.js에서 `package.json` 파일을 import하는 부분 제거 | [738](https://github.com/738) |
 | v1.0.6  | 2018.08.25   | [#12](https://github.com/738/inko/issues/12) hlhlhl -> ㅚㅗㅣㅗㅣ로 변환되는 버그 수정, [#14](https://github.com/738/inko/issues/14) rtk -> ꦵ로 변환되는 버그 수정, [#15](https://github.com/738/inko/issues/15) 복자음 가능 여부 옵션화, `config` 함수 추가 | [algoshipda](https://github.com/algoshipda), [738](https://github.com/738) |
+| v1.0.7  | 2019.04.21   | [#22](https://github.com/738/inko/issues/22) `is한글` 함수에서 "가" ~ "긯" 범위를 한글로 인식하지 않는 버그 수정 | [738](https://github.com/738), [EntryDark](https://github.com/EntryDark) |
 
 ## Installation
 

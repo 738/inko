@@ -68,7 +68,7 @@
             option.allowDoubleConsonant : false;
     }
 
-    Inko.prototype.VERSION = '1.0.6';
+    Inko.prototype.VERSION = '1.0.7';
 
     Inko.prototype.en2ko = function (eng, _option) {
         var option = _option || {};
@@ -266,7 +266,7 @@
 
     Inko.prototype.is한글 = function (char) {
         if (char.length > 1) throw new Error("한 글자가 아닙니다.");
-        return /[ㄱ-ㅎ|ㅏ-ㅣ|기-힣]/.test(char);
+        return /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/.test(char);
     }
 
     // CommonJS module
