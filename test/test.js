@@ -1,5 +1,5 @@
 var assert = require('assert');
-var Inko = require('../inko');
+var Inko = require('../.');
 var inko = new Inko();
 
 describe('inko', () => {

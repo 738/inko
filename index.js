@@ -70,7 +70,7 @@
 
     Inko.prototype.VERSION = '1.0.7';
 
-    Inko.prototype.en2ko = function (eng, _option) {
+    Inko.prototype.en2ko = function (input, _option) {
         var option = _option || {};
 
         var allowDoubleConsonant =
@@ -124,7 +124,7 @@
         };
 
         return (function () {
-            var length = eng.length;
+            var length = input.length;
             var last = -1;
             var result = [];
             var state = 0;
@@ -136,7 +136,7 @@
             };
 
             for (var i = 0; i < length; ++i) {
-                var chr = eng[i];
+                var chr = input[i];
                 var cur = 영어index[chr];
                 if (typeof cur === 'undefined') {
                     state = 0;
