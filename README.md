@@ -36,6 +36,7 @@
 | v1.0.5  | 2018.08.11   | inko.js에서 `package.json` 파일을 import하는 부분 제거 | [738](https://github.com/738) |
 | v1.0.6  | 2018.08.25   | [#12](https://github.com/738/inko/issues/12) hlhlhl -> ㅚㅗㅣㅗㅣ로 변환되는 버그 수정, [#14](https://github.com/738/inko/issues/14) rtk -> ꦵ로 변환되는 버그 수정, [#15](https://github.com/738/inko/issues/15) 복자음 가능 여부 옵션화, `config` 함수 추가 | [algoshipda](https://github.com/algoshipda), [738](https://github.com/738) |
 | v1.0.7  | 2019.04.21   | [#22](https://github.com/738/inko/issues/22) `is한글` 함수에서 "가" ~ "긯" 범위를 한글로 인식하지 않는 버그 수정 | [738](https://github.com/738), [EntryDark](https://github.com/EntryDark) |
+| v1.1.0  | 2019.04.22   | [#6](https://github.com/738/inko/issues/6) index.d.ts 지원, [#21](https://github.com/738/inko/issues/21) circleci 연동 | [738](https://github.com/738) |
 
 ## Installation
 
@@ -55,7 +56,7 @@ yarn add inko
 
 CDN
 ```html
-<script src="https://cdn.jsdelivr.net/npm/inko@1.0.7/inko.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/inko@1.1.0/inko.min.js"></script>
 ```
 
 Bower

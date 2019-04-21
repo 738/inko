@@ -20,7 +20,7 @@ gulp.task('watch', () => {
 
 gulp.task('build', (cb) => {
     pump([gulp.src('index.js'), sourcemaps.init(),
-        rename('index.min.js'), uglify(), sourcemaps.write('.'),
+        rename('inko.min.js'), uglify(), sourcemaps.write('.'),
         gulp.dest('./'),
     ], cb);
 })
