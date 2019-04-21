@@ -4,8 +4,12 @@
 </h1>
 
 <p align="center">
-  <img src="https://img.shields.io/teamcity/codebetter/bt428.svg" />
-  <img src="https://img.shields.io/github/stars/738/inko.svg?style=social&label=Stars" />
+  <a href="https://circleci.com/gh/738/inko/tree/master">
+    <img src="https://circleci.com/gh/738/inko/tree/master.svg?style=svg" />
+  </a>
+  <a href="https://github.com/738/inko">
+    <img src="https://img.shields.io/github/stars/738/inko.svg?style=social&label=Stars" />
+  </a>
   <a href="https://npmjs.com/package/inko">
     <img src="https://img.shields.io/npm/v/inko.svg" alt="version" />
   </a>
