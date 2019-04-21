@@ -21,8 +21,3 @@ jobs:
       - run:
           name: test
           command: npm test
-      - store_artifacts:
-          path: /test-results
-          destination: prefix
-      - store_test_results:
-          path: /test-results
