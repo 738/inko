@@ -13,6 +13,9 @@
   <a href="https://npmjs.com/package/inko">
     <img src="https://img.shields.io/npm/v/inko.svg" alt="version" />
   </a>
+  <a href="https://npmjs.com/package/inko">
+    <img src="https://img.shields.io/npm/dm/inko.svg?style=flat-square" />
+  </a>
   <a href="https://www.jsdelivr.com/package/npm/inko">
     <img src="https://data.jsdelivr.com/v1/package/npm/inko/badge" />
   </a>
