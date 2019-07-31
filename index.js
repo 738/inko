@@ -68,7 +68,7 @@
             option.allowDoubleConsonant : false;
     }
 
-    Inko.prototype.VERSION = '1.1.0';
+    Inko.prototype.VERSION = '1.1.1';
 
     Inko.prototype.en2ko = function (input, _option) {
         var option = _option || {};
