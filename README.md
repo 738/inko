@@ -13,6 +13,9 @@
   <a href="https://npmjs.com/package/inko">
     <img src="https://img.shields.io/npm/v/inko.svg" alt="version" />
   </a>
+  <a href="https://hits.seeyoufarm.com"/>
+    <img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2F738%2Finko"/>
+  </a>
   <a href="https://npmjs.com/package/inko">
     <img src="https://img.shields.io/npm/dm/inko.svg?style=flat-square" />
   </a>
