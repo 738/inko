@@ -37,6 +37,7 @@
 - 영타를 한글로 쳤을 때, 혹은 한타를 영어로 변환해주는 기능을 가진 자바스크립트 오픈소스 라이브러리입니다.
 - [Inko Offical Website](https://inko.js.org) has been launched!
 - [Inko 한영타변환기 Chrome Extension](https://chrome.google.com/webstore/detail/inko-%ED%95%9C%EC%98%81%ED%83%80%EB%B3%80%ED%99%98%EA%B8%B0/bijdbcchfaolmleinaghdbnemmdabbmn?hl=ko) has been launched! (2019.03.25)
+- [inko.py](https://github.com/JackCme/inko.py) has been launched! (2020.04.29) (Thanks to [JackCme](https://github.com/JackCme))
 
 ## Release Note
 | Version | Release Date | Changes | Contributors |
@@ -129,6 +130,7 @@ inko.en2ko('rtrt', { allowDoubleConsonant: false });
 * [inko-web](https://github.com/738/inko-web) - Inko official website
 * [inko-chrome-extension](https://github.com/738/inko-chrome-extension) - Inko chrome extension
 * [alfred-inko](https://github.com/738/alfred-inko) - Alfred 3 workflow to convert misspelled English characters into Korean letters (& vice versa)
+* [inko.py](https://github.com/JackCme/inko.py) - Python implementation of inko.js
 
 ## Contributors
 | [<img src="https://avatars0.githubusercontent.com/u/36702053?s=200&v=4" width="50px" align="center"/><br /><sub><b>738 (Jon Jee)</b></sub>](https://github.com/738) | [<img src="https://avatars2.githubusercontent.com/u/12122155?s=200&v=4" width="50px" align="center"/><br /><sub><b>algoshipda</b></sub>](https://github.com/algoshipda) | [<img src="https://avatars3.githubusercontent.com/u/24207964?s=200&v=4" width="50px" align="center"/><br /><sub><b>ahnsv</b></sub>](https://github.com/ahnsv) | [<img src="https://avatars1.githubusercontent.com/u/29385395?s=200&v=4" width="50px" align="center"/><br /><sub><b>hyoungsp</b></sub>](https://github.com/hyoungsp) | [<img src="https://avatars1.githubusercontent.com/u/39438507?s=50&v=4" width="50px" align="center"/><br /><sub><b>joonghyeob-shin</b></sub>](https://github.com/joonghyeob-shin) |

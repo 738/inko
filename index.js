@@ -284,7 +284,7 @@
         });
     }
 
-    // if there is a importsScrips object define chance for worker
+    // if there is a importScripts object define chance for worker
     // allows worker to use full Chance functionality with seed
     if (typeof importScripts !== 'undefined') {
         inko = new Inko();
