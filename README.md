@@ -131,6 +131,7 @@ inko.en2ko('rtrt', { allowDoubleConsonant: false });
 * [inko-chrome-extension](https://github.com/738/inko-chrome-extension) - Inko chrome extension
 * [alfred-inko](https://github.com/738/alfred-inko) - Alfred 3 workflow to convert misspelled English characters into Korean letters (& vice versa)
 * [inko.py](https://github.com/JackCme/inko.py) - Python implementation of inko.js
+* [inko.kt](https://github.com/kimcore/inko.kt) - Kotlin implementation of inko.js (Also works in Java)
 
 ## Contributors
 | [<img src="https://avatars0.githubusercontent.com/u/36702053?s=200&v=4" width="50px" align="center"/><br /><sub><b>738 (Jon Jee)</b></sub>](https://github.com/738) | [<img src="https://avatars2.githubusercontent.com/u/12122155?s=200&v=4" width="50px" align="center"/><br /><sub><b>algoshipda</b></sub>](https://github.com/algoshipda) | [<img src="https://avatars3.githubusercontent.com/u/24207964?s=200&v=4" width="50px" align="center"/><br /><sub><b>ahnsv</b></sub>](https://github.com/ahnsv) | [<img src="https://avatars1.githubusercontent.com/u/29385395?s=200&v=4" width="50px" align="center"/><br /><sub><b>hyoungsp</b></sub>](https://github.com/hyoungsp) | [<img src="https://avatars1.githubusercontent.com/u/39438507?s=50&v=4" width="50px" align="center"/><br /><sub><b>joonghyeob-shin</b></sub>](https://github.com/joonghyeob-shin) |
