@@ -38,6 +38,7 @@
 - [Inko Offical Website](https://inko.js.org) has been launched!
 - [Inko 한영타변환기 Chrome Extension](https://chrome.google.com/webstore/detail/inko-%ED%95%9C%EC%98%81%ED%83%80%EB%B3%80%ED%99%98%EA%B8%B0/bijdbcchfaolmleinaghdbnemmdabbmn?hl=ko) has been launched! (2019.03.25)
 - [inko.py](https://github.com/JackCme/inko.py) has been launched! (2020.04.29) (Thanks to [JackCme](https://github.com/JackCme))
+- [inko.kt](https://github.com/kimcore/inko.kt) has been launched! (2020.07.19) (Thanks to [kimcore](https://github.com/kimcore))
 
 ## Release Note
 | Version | Release Date | Changes | Contributors |
