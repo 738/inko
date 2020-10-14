@@ -266,7 +266,7 @@
 
     Inko.prototype.is한글 = function (char) {
         if (char.length > 1) throw new Error("한 글자가 아닙니다.");
-        return /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/.test(char);
+        return /[ㄱ-ㅎㅏ-ㅣ가-힣]/.test(char);
     }
 
     // CommonJS module
