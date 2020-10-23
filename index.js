@@ -259,6 +259,21 @@
                 if (중2 === -1) 중1 = 한글.indexOf(중성[중]);
 
                 return [-1, 중1, 중2, -1, -1];
+            } else if (종성.indexOf(_한글) > -1) {
+                var 종 = 종성.indexOf(_한글);
+                var 종1 = 종, 종2 = -1;
+                if (종 == 종성.indexOf("ㄳ")) 종1 = 한글.indexOf("ㄱ"), 종2 = 한글.indexOf("ㅅ");
+                else if (종 == 종성.indexOf("ㄵ")) 종1 = 한글.indexOf("ㄴ"), 종2 = 한글.indexOf("ㅈ");
+                else if (종 == 종성.indexOf("ㄶ")) 종1 = 한글.indexOf("ㄴ"), 종2 = 한글.indexOf("ㅎ");
+                else if (종 == 종성.indexOf("ㄺ")) 종1 = 한글.indexOf("ㄹ"), 종2 = 한글.indexOf("ㄱ");
+                else if (종 == 종성.indexOf("ㄻ")) 종1 = 한글.indexOf("ㄹ"), 종2 = 한글.indexOf("ㅁ");
+                else if (종 == 종성.indexOf("ㄼ")) 종1 = 한글.indexOf("ㄹ"), 종2 = 한글.indexOf("ㅂ");
+                else if (종 == 종성.indexOf("ㄽ")) 종1 = 한글.indexOf("ㄹ"), 종2 = 한글.indexOf("ㅅ");
+                else if (종 == 종성.indexOf("ㄾ")) 종1 = 한글.indexOf("ㄹ"), 종2 = 한글.indexOf("ㅌ");
+                else if (종 == 종성.indexOf("ㄿ")) 종1 = 한글.indexOf("ㄹ"), 종2 = 한글.indexOf("ㅍ");
+                else if (종 == 종성.indexOf("ㅀ")) 종1 = 한글.indexOf("ㄹ"), 종2 = 한글.indexOf("ㅎ");
+                else if (종 == 종성.indexOf("ㅄ")) 종1 = 한글.indexOf("ㅂ"), 종2 = 한글.indexOf("ㅅ");
+                return [종1,종2,-1,-1, -1];
             }
         }
         return [-1, -1, -1, -1, -1];
