@@ -273,7 +273,7 @@
                 else if (종 == 종성.indexOf("ㄿ")) 종1 = 한글.indexOf("ㄹ"), 종2 = 한글.indexOf("ㅍ");
                 else if (종 == 종성.indexOf("ㅀ")) 종1 = 한글.indexOf("ㄹ"), 종2 = 한글.indexOf("ㅎ");
                 else if (종 == 종성.indexOf("ㅄ")) 종1 = 한글.indexOf("ㅂ"), 종2 = 한글.indexOf("ㅅ");
-                return [종1,종2,-1,-1, -1];
+                return [종1, 종2, -1, -1, -1];
             }
         }
         return [-1, -1, -1, -1, -1];
