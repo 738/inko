@@ -130,6 +130,17 @@ describe('inko', () => {
         assert.equal(inko.ko2en('ㅗ디ㅣㅐ'), 'hello');
         assert.equal(inko.ko2en('ㅗ디ㅣㅐ 재깅!'), 'hello world!');
         assert.equal(inko.ko2en('ㅡㅛ ㄹ갸둥 ㅑㄴ ㅗ뭉내ㅡㄷ'), 'my friend is handsome');
-        assert.equal(inko.ko2en('애 ㅛㅐㅕ ㄱ드드ㅠㄷㄱ ㅡㄷ?'), 'do you remember me?');
+        assert.equal(inko.ko2en('ㄱㄱㄱㄱ'), 'rrrr');
+        assert.equal(inko.ko2en('안녕하세요'), 'dkssudgktpdy');
+        assert.equal(inko.ko2en('안녕하십니까'), 'dkssudgktlqslRk');
+        assert.equal(inko.ko2en('ㄲㄲㄲㄲㄲ'), 'RRRRR');
+        assert.equal(inko.ko2en('앍얽웺딗'), 'dkfrdjfrdnpqtelrt');
+        assert.equal(inko.ko2en('ㄺㅄ'), 'frqt');
+        assert.equal(inko.ko2en('ㄹ'), 'f');
+        assert.equal(inko.ko2en('ㄻ'), 'fa');
+        assert.equal(inko.ko2en('ㄻㄱ'), 'far');
+        assert.equal(inko.ko2en('ㄳ'), 'rt');
+        assert.equal(inko.ko2en('ㄻㄳㄲ'), 'fartR');
+        assert.equal(inko.ko2en('ㅁㄴㅇㄻㄴㅇㄹ'), 'asdfasdf');
     });
 });
