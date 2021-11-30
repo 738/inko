@@ -8,23 +8,26 @@ import rename from 'gulp-rename';
 import sourcemaps from 'gulp-sourcemaps';
 import pump from 'pump';
 
-gulp.task('test', () =>
-    gulp.src('test/**/*.js')
-        .pipe(mocha())
-);
+gulp.task('test', () => gulp.src('test/**/*.js').pipe(mocha()));
 
 gulp.task('watch', () => {
-    gulp.watch(['index.js', 'gulpfile.babel.js', 'test/**/*.js'], ['test'])
+  gulp.watch(['index.js', 'gulpfile.babel.js', 'test/**/*.js'], ['test']);
 });
 
-
 gulp.task('build', (cb) => {
-    pump([gulp.src('index.js'), sourcemaps.init(),
-        rename('inko.min.js'), uglify(), sourcemaps.write('.'),
-        gulp.dest('./'),
-    ], cb);
-})
+  pump(
+    [
+      gulp.src('index.js'),
+      sourcemaps.init(),
+      rename('inko.min.js'),
+      uglify(),
+      sourcemaps.write('.'),
+      gulp.dest('./'),
+    ],
+    cb
+  );
+});
 
 gulp.task('default', ['watch', 'test'], () => {
-    gutil.log('Gulp is running...');
+  gutil.log('Gulp is running...');
 });

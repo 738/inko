@@ -3,7 +3,7 @@ jobs:
   build:
     working_directory: ~/inko
     docker:
-      - image: "circleci/node:9.6.1"
+      - image: 'circleci/node:9.6.1'
     steps:
       - checkout
       - run:
