@@ -1,3 +1,4 @@
-node_modules
 .vscode
+node_modules
 README.md
+inko.min.js
