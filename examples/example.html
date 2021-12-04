@@ -1,32 +1,47 @@
-<!Doctype html>
+<!DOCTYPE html>
 <html>
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/inko@1.1.1/inko.min.js"></script>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/inko@1.1.1/inko.min.js"
+    ></script>
     <title>example</title>
-</head>
-<body>
-<script>
-    var inko = new Inko();
-    function englishToKorean(text) {
-        document.getElementById("koreanOutput").innerHTML = inko.en2ko(text);
-    }
+  </head>
+  <body>
+    <script>
+      var inko = new Inko();
+      function englishToKorean(text) {
+        document.getElementById('koreanOutput').innerHTML = inko.en2ko(text);
+      }
 
-    function koreanToEnglish(text) {
-        document.getElementById("englishOutput").innerHTML = inko.ko2en(text);
-    }
-</script>
-<h1>inko.js EXAMPLE HTML</h1>
-<h2>영타 -> 한글</h2>
-<textarea id="englishInput" type="text" onkeyup="englishToKorean(this.value)" value=""></textarea>
-<br />
-<div id="koreanOutput"></div>
+      function koreanToEnglish(text) {
+        document.getElementById('englishOutput').innerHTML = inko.ko2en(text);
+      }
+    </script>
+    <h1>inko.js EXAMPLE HTML</h1>
+    <h2>영타 -> 한글</h2>
+    <textarea
+      id="englishInput"
+      type="text"
+      onkeyup="englishToKorean(this.value)"
+      value=""
+    ></textarea>
+    <br />
+    <div id="koreanOutput"></div>
 
-<h2>한타 -> 영어</h2>
-<textarea id="koreanInput" type="text" onkeyup="koreanToEnglish(this.value)" value=""></textarea>
-<br />
-<div id="englishOutput"></div>
-
-</body>
+    <h2>한타 -> 영어</h2>
+    <textarea
+      id="koreanInput"
+      type="text"
+      onkeyup="koreanToEnglish(this.value)"
+      value=""
+    ></textarea>
+    <br />
+    <div id="englishOutput"></div>
+  </body>
 </html>
