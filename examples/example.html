@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
   <head>
     <meta charset="utf-8" />
@@ -6,21 +6,18 @@
       name="viewport"
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
-    <script
-      type="text/javascript"
-      src="https://cdn.jsdelivr.net/npm/inko@1.1.1/inko.min.js"
-    ></script>
+    <script type="text/javascript" src="../inko.min.js"></script>
     <title>example</title>
   </head>
   <body>
     <script>
       var inko = new Inko();
       function englishToKorean(text) {
-        document.getElementById('koreanOutput').innerHTML = inko.en2ko(text);
+        document.getElementById('koreanOutput').textContent = inko.en2ko(text);
       }
 
       function koreanToEnglish(text) {
-        document.getElementById('englishOutput').innerHTML = inko.ko2en(text);
+        document.getElementById('englishOutput').textContent = inko.ko2en(text);
       }
     </script>
     <h1>inko.js EXAMPLE HTML</h1>

@@ -1,4 +1,4 @@
-.vscode
 node_modules
-README.md
 inko.min.js
+inko.min.js.map
+package-lock.json

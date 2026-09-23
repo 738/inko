@@ -1,3 +1,4 @@
+var { describe, it } = require('node:test');
 var assert = require('assert');
 var Inko = require('../.');
 var inko = new Inko();
@@ -186,43 +187,39 @@ describe('inko', () => {
     assert.equal(inko.en2ko('rsefaqtdwczxvg', o()), 'ㄱㄴㄷㄻㅄㅇㅈㅊㅋㅌㅍㅎ');
   });
 
-  it('설정 부여 관련', () => {
+  describe('설정 부여 관련', () => {
     it('constructor에 allowDoubleConsonant: true 설정 부여', () => {
-      let inko2 = new Inko({ allowDoubleConsonant: true });
-      assert.equal(inko2.en2ko('rtrt'), 'ㄳㄳ');
-      assert.equal(inko2.en2ko('rsefaqtdwczxvg'), 'ㄱㄴㄷㄻㅄㅇㅈㅊㅋㅌㅍㅎ');
+      const instance = new Inko({ allowDoubleConsonant: true });
+      assert.equal(instance.en2ko('rtrt'), 'ㄳㄳ');
+      assert.equal(
+        instance.en2ko('rsefaqtdwczxvg'),
+        'ㄱㄴㄷㄻㅄㅇㅈㅊㅋㅌㅍㅎ'
+      );
     });
 
-    it('constructor에 allowDoubleConsonant: false 설정 부여', () => {
-      let inko3 = new Inko({ allowDoubleConsonant: false });
-      assert.equal(inko3.en2ko('rtrt'), 'ㄱㅅㄱㅅ');
+    it('config로 설정을 켜고 끄거나 기본값으로 초기화', () => {
+      const instance = new Inko({ allowDoubleConsonant: false });
+      assert.equal(instance.en2ko('rtrt'), 'ㄱㅅㄱㅅ');
+      instance.config({ allowDoubleConsonant: true });
+      assert.equal(instance.en2ko('rtrt'), 'ㄳㄳ');
+      instance.config({ allowDoubleConsonant: false });
+      assert.equal(instance.en2ko('rtrt'), 'ㄱㅅㄱㅅ');
+      instance.config({ allowDoubleConsonant: true });
+      instance.config();
+      assert.equal(instance.en2ko('rtrt'), 'ㄱㅅㄱㅅ');
+    });
+
+    it('함수에 전달한 설정은 해당 호출에만 적용', () => {
+      const instance = new Inko();
       assert.equal(
-        inko3.en2ko('rsefaqtdwczxvg'),
-        'ㄱㄴㄷㄹㅁㅂㅅㅇㅈㅊㅋㅌㅍㅎ'
+        instance.en2ko('rtrt', { allowDoubleConsonant: true }),
+        'ㄳㄳ'
       );
-
-      it('config 함수로 설정 부여', () => {
-        inko3.config({ allowDoubleConsonant: true });
-        assert.equal(inko3.en2ko('rtrt'), 'ㄳㄳ');
-        assert.equal(inko3.en2ko('rsefaqtdwczxvg'), 'ㄱㄴㄷㄻㅄㅇㅈㅊㅋㅌㅍㅎ');
-        inko3.config({ allowDoubleConsonant: false });
-        assert.equal(inko3.en2ko('rtrt'), 'ㄱㅅㄱㅅ');
-        assert.equal(
-          inko3.en2ko('rsefaqtdwczxvg'),
-          'ㄱㄴㄷㄹㅁㅂㅅㅇㅈㅊㅋㅌㅍㅎ'
-        );
-
-        it('en2ko 함수에서 인자로 설정 부여', () => {
-          assert.equal(
-            inko3.en2ko('rtrt', { allowDoubleConsonant: true }),
-            'ㄳㄳ'
-          );
-          assert.equal(
-            inko3.en2ko('rsefaqtdwczxvg', { allowDoubleConsonant: true }),
-            'ㄱㄴㄷㄻㅄㅇㅈㅊㅋㅌㅍㅎ'
-          );
-        });
-      });
+      assert.equal(
+        instance.en2ko('rsefaqtdwczxvg', { allowDoubleConsonant: true }),
+        'ㄱㄴㄷㄻㅄㅇㅈㅊㅋㅌㅍㅎ'
+      );
+      assert.equal(instance.en2ko('rtrt'), 'ㄱㅅㄱㅅ');
     });
   });
 

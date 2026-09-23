@@ -1,23 +1,32 @@
-version: 2
+version: 2.1
+
 jobs:
   build:
-    working_directory: ~/inko
     docker:
-      - image: 'circleci/node:9.6.1'
+      - image: cimg/node:24.21.0
     steps:
-      - checkout
       - run:
-          name: update-npm
-          command: 'sudo npm install -g npm@latest'
-      - restore_cache:
-          key: dependency-cache-{{ checksum "package.json" }}
+          name: Check out the exact commit over public HTTPS
+          command: |
+            git init
+            git remote add origin https://github.com/738/inko.git
+            git fetch --depth=1 origin "$CIRCLE_SHA1"
+            git checkout --detach FETCH_HEAD
+            test "$(git rev-parse HEAD)" = "$CIRCLE_SHA1"
       - run:
-          name: install-npm-wee
-          command: npm install
-      - save_cache:
-          key: dependency-cache-{{ checksum "package.json" }}
-          paths:
-            - ./node_modules
+          name: Install locked development dependencies
+          command: npm ci --ignore-scripts
       - run:
-          name: test
-          command: npm test
+          name: Test, build, and verify the npm package
+          command: npm run verify
+      - run:
+          name: Check committed browser artifacts
+          command: git diff --exit-code -- inko.min.js inko.min.js.map
+      - run:
+          name: Audit dependencies
+          command: npm audit --audit-level=high
+
+workflows:
+  build_and_test:
+    jobs:
+      - build

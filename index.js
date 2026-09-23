@@ -57,11 +57,15 @@
 
   // constructor
   function Inko(_option) {
+    if (!(this instanceof Inko)) return new Inko(_option);
+
     var option = _option || {};
     this._allowDoubleConsonant =
       typeof option.allowDoubleConsonant !== 'undefined'
         ? option.allowDoubleConsonant
         : false;
+    this.en2ko = this.en2ko.bind(this);
+    this.ko2en = this.ko2en.bind(this);
     return this;
   }
 
@@ -73,7 +77,7 @@
         : false;
   };
 
-  Inko.prototype.VERSION = '1.1.1';
+  Inko.prototype.VERSION = '1.1.2';
 
   Inko.prototype.en2ko = function (input, _option) {
     var option = _option || {};
@@ -222,42 +226,42 @@
         종2 = -1;
 
       if (중 == 중성.indexOf('ㅘ'))
-        (중1 = 한글.indexOf('ㅗ')), (중2 = 한글.indexOf('ㅏ'));
+        ((중1 = 한글.indexOf('ㅗ')), (중2 = 한글.indexOf('ㅏ')));
       else if (중 == 중성.indexOf('ㅙ'))
-        (중1 = 한글.indexOf('ㅗ')), (중2 = 한글.indexOf('ㅐ'));
+        ((중1 = 한글.indexOf('ㅗ')), (중2 = 한글.indexOf('ㅐ')));
       else if (중 == 중성.indexOf('ㅚ'))
-        (중1 = 한글.indexOf('ㅗ')), (중2 = 한글.indexOf('ㅣ'));
+        ((중1 = 한글.indexOf('ㅗ')), (중2 = 한글.indexOf('ㅣ')));
       else if (중 == 중성.indexOf('ㅝ'))
-        (중1 = 한글.indexOf('ㅜ')), (중2 = 한글.indexOf('ㅓ'));
+        ((중1 = 한글.indexOf('ㅜ')), (중2 = 한글.indexOf('ㅓ')));
       else if (중 == 중성.indexOf('ㅞ'))
-        (중1 = 한글.indexOf('ㅜ')), (중2 = 한글.indexOf('ㅔ'));
+        ((중1 = 한글.indexOf('ㅜ')), (중2 = 한글.indexOf('ㅔ')));
       else if (중 == 중성.indexOf('ㅟ'))
-        (중1 = 한글.indexOf('ㅜ')), (중2 = 한글.indexOf('ㅣ'));
+        ((중1 = 한글.indexOf('ㅜ')), (중2 = 한글.indexOf('ㅣ')));
       else if (중 == 중성.indexOf('ㅢ'))
-        (중1 = 한글.indexOf('ㅡ')), (중2 = 한글.indexOf('ㅣ'));
+        ((중1 = 한글.indexOf('ㅡ')), (중2 = 한글.indexOf('ㅣ')));
 
       if (종 == 종성.indexOf('ㄳ'))
-        (종1 = 한글.indexOf('ㄱ')), (종2 = 한글.indexOf('ㅅ'));
+        ((종1 = 한글.indexOf('ㄱ')), (종2 = 한글.indexOf('ㅅ')));
       else if (종 == 종성.indexOf('ㄵ'))
-        (종1 = 한글.indexOf('ㄴ')), (종2 = 한글.indexOf('ㅈ'));
+        ((종1 = 한글.indexOf('ㄴ')), (종2 = 한글.indexOf('ㅈ')));
       else if (종 == 종성.indexOf('ㄶ'))
-        (종1 = 한글.indexOf('ㄴ')), (종2 = 한글.indexOf('ㅎ'));
+        ((종1 = 한글.indexOf('ㄴ')), (종2 = 한글.indexOf('ㅎ')));
       else if (종 == 종성.indexOf('ㄺ'))
-        (종1 = 한글.indexOf('ㄹ')), (종2 = 한글.indexOf('ㄱ'));
+        ((종1 = 한글.indexOf('ㄹ')), (종2 = 한글.indexOf('ㄱ')));
       else if (종 == 종성.indexOf('ㄻ'))
-        (종1 = 한글.indexOf('ㄹ')), (종2 = 한글.indexOf('ㅁ'));
+        ((종1 = 한글.indexOf('ㄹ')), (종2 = 한글.indexOf('ㅁ')));
       else if (종 == 종성.indexOf('ㄼ'))
-        (종1 = 한글.indexOf('ㄹ')), (종2 = 한글.indexOf('ㅂ'));
+        ((종1 = 한글.indexOf('ㄹ')), (종2 = 한글.indexOf('ㅂ')));
       else if (종 == 종성.indexOf('ㄽ'))
-        (종1 = 한글.indexOf('ㄹ')), (종2 = 한글.indexOf('ㅅ'));
+        ((종1 = 한글.indexOf('ㄹ')), (종2 = 한글.indexOf('ㅅ')));
       else if (종 == 종성.indexOf('ㄾ'))
-        (종1 = 한글.indexOf('ㄹ')), (종2 = 한글.indexOf('ㅌ'));
+        ((종1 = 한글.indexOf('ㄹ')), (종2 = 한글.indexOf('ㅌ')));
       else if (종 == 종성.indexOf('ㄿ'))
-        (종1 = 한글.indexOf('ㄹ')), (종2 = 한글.indexOf('ㅍ'));
+        ((종1 = 한글.indexOf('ㄹ')), (종2 = 한글.indexOf('ㅍ')));
       else if (종 == 종성.indexOf('ㅀ'))
-        (종1 = 한글.indexOf('ㄹ')), (종2 = 한글.indexOf('ㅎ'));
+        ((종1 = 한글.indexOf('ㄹ')), (종2 = 한글.indexOf('ㅎ')));
       else if (종 == 종성.indexOf('ㅄ'))
-        (종1 = 한글.indexOf('ㅂ')), (종2 = 한글.indexOf('ㅅ'));
+        ((종1 = 한글.indexOf('ㅂ')), (종2 = 한글.indexOf('ㅅ')));
 
       // 복모음이 아니라면
       if (중2 === -1) 중1 = 한글.indexOf(중성[중]);
@@ -275,19 +279,19 @@
         var 중1 = 중,
           중2 = -1;
         if (중 == 중성.indexOf('ㅘ'))
-          (중1 = 한글.indexOf('ㅗ')), (중2 = 한글.indexOf('ㅏ'));
+          ((중1 = 한글.indexOf('ㅗ')), (중2 = 한글.indexOf('ㅏ')));
         else if (중 == 중성.indexOf('ㅙ'))
-          (중1 = 한글.indexOf('ㅗ')), (중2 = 한글.indexOf('ㅐ'));
+          ((중1 = 한글.indexOf('ㅗ')), (중2 = 한글.indexOf('ㅐ')));
         else if (중 == 중성.indexOf('ㅚ'))
-          (중1 = 한글.indexOf('ㅗ')), (중2 = 한글.indexOf('ㅣ'));
+          ((중1 = 한글.indexOf('ㅗ')), (중2 = 한글.indexOf('ㅣ')));
         else if (중 == 중성.indexOf('ㅝ'))
-          (중1 = 한글.indexOf('ㅜ')), (중2 = 한글.indexOf('ㅓ'));
+          ((중1 = 한글.indexOf('ㅜ')), (중2 = 한글.indexOf('ㅓ')));
         else if (중 == 중성.indexOf('ㅞ'))
-          (중1 = 한글.indexOf('ㅜ')), (중2 = 한글.indexOf('ㅔ'));
+          ((중1 = 한글.indexOf('ㅜ')), (중2 = 한글.indexOf('ㅔ')));
         else if (중 == 중성.indexOf('ㅟ'))
-          (중1 = 한글.indexOf('ㅜ')), (중2 = 한글.indexOf('ㅣ'));
+          ((중1 = 한글.indexOf('ㅜ')), (중2 = 한글.indexOf('ㅣ')));
         else if (중 == 중성.indexOf('ㅢ'))
-          (중1 = 한글.indexOf('ㅡ')), (중2 = 한글.indexOf('ㅣ'));
+          ((중1 = 한글.indexOf('ㅡ')), (중2 = 한글.indexOf('ㅣ')));
 
         // 복모음이 아니라면
         if (중2 === -1) 중1 = 한글.indexOf(중성[중]);
@@ -298,27 +302,27 @@
         var 종1 = 종,
           종2 = -1;
         if (종 == 종성.indexOf('ㄳ'))
-          (종1 = 한글.indexOf('ㄱ')), (종2 = 한글.indexOf('ㅅ'));
+          ((종1 = 한글.indexOf('ㄱ')), (종2 = 한글.indexOf('ㅅ')));
         else if (종 == 종성.indexOf('ㄵ'))
-          (종1 = 한글.indexOf('ㄴ')), (종2 = 한글.indexOf('ㅈ'));
+          ((종1 = 한글.indexOf('ㄴ')), (종2 = 한글.indexOf('ㅈ')));
         else if (종 == 종성.indexOf('ㄶ'))
-          (종1 = 한글.indexOf('ㄴ')), (종2 = 한글.indexOf('ㅎ'));
+          ((종1 = 한글.indexOf('ㄴ')), (종2 = 한글.indexOf('ㅎ')));
         else if (종 == 종성.indexOf('ㄺ'))
-          (종1 = 한글.indexOf('ㄹ')), (종2 = 한글.indexOf('ㄱ'));
+          ((종1 = 한글.indexOf('ㄹ')), (종2 = 한글.indexOf('ㄱ')));
         else if (종 == 종성.indexOf('ㄻ'))
-          (종1 = 한글.indexOf('ㄹ')), (종2 = 한글.indexOf('ㅁ'));
+          ((종1 = 한글.indexOf('ㄹ')), (종2 = 한글.indexOf('ㅁ')));
         else if (종 == 종성.indexOf('ㄼ'))
-          (종1 = 한글.indexOf('ㄹ')), (종2 = 한글.indexOf('ㅂ'));
+          ((종1 = 한글.indexOf('ㄹ')), (종2 = 한글.indexOf('ㅂ')));
         else if (종 == 종성.indexOf('ㄽ'))
-          (종1 = 한글.indexOf('ㄹ')), (종2 = 한글.indexOf('ㅅ'));
+          ((종1 = 한글.indexOf('ㄹ')), (종2 = 한글.indexOf('ㅅ')));
         else if (종 == 종성.indexOf('ㄾ'))
-          (종1 = 한글.indexOf('ㄹ')), (종2 = 한글.indexOf('ㅌ'));
+          ((종1 = 한글.indexOf('ㄹ')), (종2 = 한글.indexOf('ㅌ')));
         else if (종 == 종성.indexOf('ㄿ'))
-          (종1 = 한글.indexOf('ㄹ')), (종2 = 한글.indexOf('ㅍ'));
+          ((종1 = 한글.indexOf('ㄹ')), (종2 = 한글.indexOf('ㅍ')));
         else if (종 == 종성.indexOf('ㅀ'))
-          (종1 = 한글.indexOf('ㄹ')), (종2 = 한글.indexOf('ㅎ'));
+          ((종1 = 한글.indexOf('ㄹ')), (종2 = 한글.indexOf('ㅎ')));
         else if (종 == 종성.indexOf('ㅄ'))
-          (종1 = 한글.indexOf('ㅂ')), (종2 = 한글.indexOf('ㅅ'));
+          ((종1 = 한글.indexOf('ㅂ')), (종2 = 한글.indexOf('ㅅ')));
         return [종1, 종2, -1, -1, -1];
       }
     }
@@ -348,7 +352,7 @@
   // if there is a importScripts object define chance for worker
   // allows worker to use full Chance functionality with seed
   if (typeof importScripts !== 'undefined') {
-    inko = new Inko();
+    self.inko = new Inko();
     self.Inko = Inko;
   }
 
