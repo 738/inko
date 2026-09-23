@@ -1,0 +1,25 @@
+version: 2.1
+
+jobs:
+  build:
+    docker:
+      - image: cimg/node:24.21.0
+    steps:
+      - checkout
+      - run:
+          name: Install locked development dependencies
+          command: npm ci --ignore-scripts
+      - run:
+          name: Test, build, and verify the npm package
+          command: npm run verify
+      - run:
+          name: Check committed browser artifacts
+          command: git diff --exit-code -- inko.min.js inko.min.js.map
+      - run:
+          name: Audit dependencies
+          command: npm audit --audit-level=high
+
+workflows:
+  build_and_test:
+    jobs:
+      - build
