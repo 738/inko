@@ -1,6 +1,6 @@
 {
   "name": "inko",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "영타를 한글로 쳤을 때, 혹은 한타를 영어로 변환해주는 기능을 가진 자바스크립트 오픈소스 라이브러리입니다.",
   "bugs": {
     "url": "https://github.com/738/inko/issues",
@@ -11,7 +11,12 @@
     "test": "test"
   },
   "scripts": {
-    "test": "mocha",
+    "test": "node --test test/*.js",
+    "build": "node scripts/build.cjs",
+    "check:package": "node scripts/check-package.cjs",
+    "verify": "npm test && npm run build && npm run check:package",
+    "prepack": "npm run build",
+    "prepublishOnly": "npm run verify",
     "prettier": "prettier --write ."
   },
   "keywords": [
@@ -34,25 +39,22 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:738/inko.git"
+    "url": "git+https://github.com/738/inko.git"
   },
   "author": "Jon Jee",
   "license": "MIT",
   "homepage": "https://inko.js.org",
   "devDependencies": {
-    "babel-core": "^6.26.3",
-    "babel-preset-es2015": "^6.24.1",
-    "babel-register": "^6.26.0",
-    "gulp": "^4.0.2",
-    "gulp-mocha": "^7.0.2",
-    "gulp-rename": "^2.0.0",
-    "gulp-sourcemaps": "^2.6.5",
-    "gulp-typescript": "^6.0.0-alpha.1",
-    "gulp-uglify-es": "^2.0.0",
-    "gulp-util": "^3.0.8",
-    "mocha": "^8.2.0",
-    "prettier": "^2.5.0",
-    "pump": "^3.0.0",
-    "typescript": "^4.0.3"
-  }
+    "prettier": "^3.9.8",
+    "terser": "^5.51.2",
+    "typescript": "^7.0.2"
+  },
+  "types": "index.d.ts",
+  "files": [
+    "index.js",
+    "index.d.ts",
+    "inko.min.js",
+    "inko.min.js.map",
+    "CHANGELOG.md"
+  ]
 }
