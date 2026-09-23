@@ -38,9 +38,21 @@
 - [inko.py](https://github.com/JackCme/inko.py) has been launched! (2020.04.29) (Thanks to [JackCme](https://github.com/JackCme))
 - [inko.kt](https://github.com/kimcore/inko.kt) has been launched! (2020.07.19) (Thanks to [kimcore](https://github.com/kimcore))
 
-## Release Note
+## Release Notes
 
-See [CHANGELOG.md](https://github.com/738/inko/blob/master/CHANGELOG.md) for maintenance releases and upgrade notes.
+### [v1.1.2](https://github.com/738/inko/releases/tag/v1.1.2) — 2026-09-23
+
+Available on [npm](https://www.npmjs.com/package/inko/v/1.1.2) and [jsDelivr](https://cdn.jsdelivr.net/npm/inko@1.1.2/inko.min.js).
+
+- Fix package loading in Node.js, bundlers, and Vitest.
+- Correct standalone compound-consonant conversion and keep conversion methods working when used as callbacks.
+- Fix TypeScript declarations and strict-mode Web Worker support.
+- Remove runtime dependencies and refresh the build tools and CI checks.
+
+See [CHANGELOG.md](https://github.com/738/inko/blob/master/CHANGELOG.md) for the full list of fixes. The default two-set keyboard mapping is unchanged.
+
+<details>
+<summary>Earlier releases</summary>
 
 | Version | Release Date | Changes                                                                                                                                                                                                                                                      | Contributors                                                               |
 | ------- | ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------- |
@@ -52,18 +64,22 @@ See [CHANGELOG.md](https://github.com/738/inko/blob/master/CHANGELOG.md) for mai
 | v1.1.0  | 2019.04.22   | [#6](https://github.com/738/inko/issues/6) index.d.ts 지원, [#21](https://github.com/738/inko/issues/21) circleci 연동                                                                                                                                       | [738](https://github.com/738)                                              |
 | v1.1.1  | 2019.07.31   | 홈페이지 주소 변경 (https://inko.js.org), npm 다운로드 배지 추가                                                                                                                                                                                             | [738](https://github.com/738)                                              |
 
+</details>
+
 ## Installation
+
+Install or upgrade to **1.1.2** using your package manager.
 
 ### npm
 
 ```bash
-npm install inko
+npm install inko@1.1.2
 ```
 
 ### yarn
 
 ```bash
-yarn add inko
+yarn add inko@1.1.2
 ```
 
 ### As Browser module
