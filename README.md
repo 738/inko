@@ -1,26 +1,26 @@
 <h1 align="center">
-    <img height="250" src="https://github.com/738/inko/blob/master/images/inko_logo.png?raw=true" />
+    <img height="250" src="https://raw.githubusercontent.com/738/inko/master/images/inko_logo.png" alt="Inko.js logo" />
     <br> Inko.js
 </h1>
 
 <p align="center">
-  <a href="https://github.com/738/inko/actions/workflows/ci.yml">
-    <img src="https://github.com/738/inko/actions/workflows/ci.yml/badge.svg" />
+  <a href="https://github.com/738/inko/actions/workflows/ci.yml?query=branch%3Amaster">
+    <img src="https://github.com/738/inko/actions/workflows/ci.yml/badge.svg?branch=master&amp;event=push" alt="CI status on master" />
   </a>
   <a href="https://github.com/738/inko">
-    <img src="https://img.shields.io/github/stars/738/inko.svg?style=social&label=Stars" />
+    <img src="https://img.shields.io/github/stars/738/inko?style=flat&amp;label=stars" alt="GitHub stars" />
   </a>
-  <a href="https://npmjs.com/package/inko">
-    <img src="https://img.shields.io/npm/v/inko.svg" alt="version" />
+  <a href="https://www.npmjs.com/package/inko">
+    <img src="https://img.shields.io/npm/v/inko?style=flat&amp;label=npm" alt="Latest version published on npm" />
   </a>
-  <a href="https://npmjs.com/package/inko">
-    <img src="https://img.shields.io/npm/dm/inko.svg?style=flat-square" />
+  <a href="https://www.npmjs.com/package/inko">
+    <img src="https://img.shields.io/npm/dm/inko?style=flat&amp;label=npm%20downloads" alt="Monthly npm downloads" />
   </a>
   <a href="https://www.jsdelivr.com/package/npm/inko">
-    <img src="https://data.jsdelivr.com/v1/package/npm/inko/badge" />
+    <img src="https://img.shields.io/jsdelivr/npm/hm/inko?style=flat&amp;label=jsDelivr" alt="Monthly jsDelivr requests" />
   </a>
   <a href="https://github.com/738/inko/blob/master/LICENSE">
-    <img src="https://img.shields.io/github/license/738/inko.svg" />
+    <img src="https://img.shields.io/badge/license-MIT-blue?style=flat" alt="MIT license" />
   </a>
 </p>
 
