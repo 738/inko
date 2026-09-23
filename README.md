@@ -40,7 +40,7 @@
 
 ## Release Note
 
-See [CHANGELOG.md](CHANGELOG.md) for maintenance releases and upgrade notes.
+See [CHANGELOG.md](https://github.com/738/inko/blob/master/CHANGELOG.md) for maintenance releases and upgrade notes.
 
 | Version | Release Date | Changes                                                                                                                                                                                                                                                      | Contributors                                                               |
 | ------- | ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------- |
@@ -176,7 +176,7 @@ npm run verify
 
 `verify` runs conversion tests, rebuilds the browser bundle, and checks the packed npm artifact with CommonJS, ES modules, TypeScript, browser, AMD, and Web Worker consumers. The runtime library has no dependencies.
 
-See [the release guide](docs/RELEASING.md) for publishing instructions.
+See [the release guide](https://github.com/738/inko/blob/master/docs/RELEASING.md) for publishing instructions.
 
 ## Related
 

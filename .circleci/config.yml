@@ -5,7 +5,14 @@ jobs:
     docker:
       - image: cimg/node:24.21.0
     steps:
-      - checkout
+      - run:
+          name: Check out the exact commit over public HTTPS
+          command: |
+            git init
+            git remote add origin https://github.com/738/inko.git
+            git fetch --depth=1 origin "$CIRCLE_SHA1"
+            git checkout --detach FETCH_HEAD
+            test "$(git rev-parse HEAD)" = "$CIRCLE_SHA1"
       - run:
           name: Install locked development dependencies
           command: npm ci --ignore-scripts
